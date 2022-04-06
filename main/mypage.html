@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상품정보상세</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <!--웹 로고-->
+    <link rel="icon" type="image/x-icon" href="/images/emblem.ico" />
+  </head>
+  <body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container px-5 px-lg-5">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/member/login.html">로그인</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/member/join.html">회원가입</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/main/mypage.html">마이페이지</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header-->
+    <header class="p-3 mb-3 border-bottom">
+      <div class="container">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start ms-7"
+        >
+          <a
+            href="/main/search.html"
+            class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
+          >
+            <img
+              class="bi me-2"
+              src="/images/emblem.png"
+              width="40"
+              height="40"
+            />
+            <span class="fs-4">Inha Auction</span>
+          </a>
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-5 w-40 ms-5">
+            <input
+              type="search"
+              class="form-control"
+              placeholder="Search..."
+              aria-label="Search"
+            />
+          </form>
+          <ul
+            class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0 me-lg-4 ms-6"
+          >
+            <li>
+              <a href="/main/register.html" class="nav-link px-3 link-dark"
+                >상품등록</a
+              >
+            </li>
+            <li>
+              <a href="/main/mypage.html" class="nav-link px-3 link-dark"
+                >마이페이지</a
+              >
+            </li>
+            <li><a href="#" class="nav-link px-3 link-dark">TALK!</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <section class="py-3">
+      <div class="container px-4 px-lg-5 mt-3">
+        <h2>마이페이지</h2>
+        <hr />
+        <div class="row gx-4 gx-lg-5 row-cols-xl-2 justify-content-center">
+          <div class="col mb-5">
+            <table class="tb-w80">
+              <tr>
+                <th>이름</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>학과명</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>아이디</th>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+          <div class="col mb-5 mt-6">
+            <ul class="nav col-12 col-lg-auto mb-2 justify-content-center">
+              <li class="px-5">
+                <button
+                  type="button"
+                  class="btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#shopCommentModal"
+                >
+                  <img
+                    class="d-block m-auto"
+                    src="/images/shop.png"
+                    width="70"
+                    height="70"
+                  />
+                  <p>상점후기</p>
+                </button>
+              </li>
+              <li class="px-5">
+                <button
+                  type="button"
+                  class="btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#infoChangeModal"
+                >
+                  <img
+                    class="d-block m-auto"
+                    src="/images/infochange.png"
+                    width="70"
+                    height="70"
+                  />
+                  <p>회원정보수정</p>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <h2>거래내역</h2>
+        <hr />
+
+        <!-- 상점후기 Modal -->
+        <div
+          class="modal fade"
+          id="shopCommentModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">상점후기</h4>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <table class="tb-w100 text-center">
+                  <colgroup>
+                    <col style="width: 10%" />
+                    <col style="width: 20%" />
+                    <col style="width: 30%" />
+                    <col style="width: 10%" />
+                    <col style="width: 15%" />
+                    <col style="width: 15%" />
+                  </colgroup>
+                  <tr>
+                    <th>번호</th>
+                    <th>상품명</th>
+                    <th>구매후기</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>평점</th>
+                  </tr>
+                  <tr>
+                    <td>fd</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>dfd</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 회원정보수정 Modal -->
+        <div
+          class="modal fade"
+          id="infoChangeModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">회원정보수정</h4>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form action="">
+                  <fieldset class="mb-3">
+                    <legend>
+                      <h5>비밀번호 변경</h5>
+                    </legend>
+                    <ul id="infoChange">
+                      <li class="mb-2">
+                        <label for="user-pw">현재 비밀번호</label>
+                        <input type="password" id="user-pw" />
+                      </li>
+                      <li class="mb-2">
+                        <label for="new-pw">변경 비밀번호</label>
+                        <input type="password" id="new-pw" />
+                      </li>
+                      <li>
+                        <label for="new-pw-check">변경 비밀번호 확인</label>
+                        <input type="password" id="new-pw-check" />
+                        <button type="submit" class="btn btn-primary ms-5">
+                          비밀번호 변경
+                        </button>
+                      </li>
+                    </ul>
+                  </fieldset>
+                  <hr />
+                  <fieldset>
+                    <legend><h5>회원정보 변경</h5></legend>
+                    <ul id="infoChange">
+                      <li class="mb-2">
+                        <label for="user-email">이메일</label>
+                        <input type="email" id="user-email" size="25" />
+                      </li>
+                      <li class="mb-2">
+                        <label for="addr">주소</label>
+                        <input type="text" id="addr" size="25" />
+                      </li>
+                      <li>
+                        <label for="phone">전화번호</label>
+                        <input
+                          type="tel"
+                          id="phone"
+                          placeholder="하이픈(-) 빼고 입력해 주세요."
+                          size="25"
+                        />
+                      </li>
+                    </ul>
+                  </fieldset>
+                </form>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">
+                    Save changes
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 탭 메뉴 -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="saleList-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#saleList"
+              type="button"
+              role="tab"
+              aria-controls="saleList"
+              aria-selected="true"
+            >
+              판매현황
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="buyList-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#buyList"
+              type="button"
+              role="tab"
+              aria-controls="buyList"
+              aria-selected="false"
+            >
+              구매현황
+            </button>
+          </li>
+        </ul>
+
+        <!-- 내용 -->
+        <div class="tab-content" id="myTabContent">
+          <div
+            class="tab-pane fade show active"
+            id="saleList"
+            role="tabpanel"
+            aria-labelledby="saleList-tab"
+          >
+            <table class="tb-w100 text-center">
+              <colgroup>
+                <col style="width: 25%" />
+                <col style="width: 25%" />
+                <col style="width: 25%" />
+                <col style="width: 25%" />
+              </colgroup>
+              <tr>
+                <th>상품명</th>
+                <th>최고입찰가</th>
+                <th>경매상태</th>
+                <th>남은 마감시간</th>
+              </tr>
+              <tr>
+                <td>HTML</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CSS</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>JAVASCRIPT</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+          <div
+            class="tab-pane fade"
+            id="buyList"
+            role="tabpanel"
+            aria-labelledby="buyList-tab"
+          >
+            <table class="tb-w100 text-center">
+              <colgroup>
+                <col style="width: 20%" />
+                <col style="width: 15%" />
+                <col style="width: 15%" />
+                <col style="width: 15%" />
+                <col style="width: 20%" />
+                <col style="width: 15%" />
+              </colgroup>
+              <tr>
+                <th>상품명</th>
+                <th>최고입찰가</th>
+                <th>본인입찰가</th>
+                <th>경매상태</th>
+                <th>남은 마감시간</th>
+                <th>후기 작성</th>
+              </tr>
+              <tr>
+                <td>HTML</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>CSS</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>JAVASCRIPT</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <script>
+          let key = '${param.key}';
+          console.log(key);
+          if (key === 'saleList') {
+            $('#buyList-tab').removeClass('active');
+            $('#saleList-tab').addClass('active');
+
+            $('#buyList').removeClass('show active');
+            $('#saleList').addClass('show active');
+          } else if (key === 'buyList') {
+            $('#saleList-tab').removeClass('active');
+            $('#buyList-tab').addClass('active');
+
+            $('#saleList').removeClass('show active');
+            $('#buyList').addClass('show active');
+          }
+        </script>
+      </div>
+    </section>
+    <footer class="py-5 bg-dark">
+      <div class="container text-white">
+        <address>
+          상호명 : (주)인하옥션 / 대표이사: 이성호 사장: 박인우 / 주소:
+          인천광역시 미추홀구 인하로 100
+          <br />Tel: 032-2369-8343 (정확한 상담을 위해 통화내용이 저장됩니다. )
+        </address>
+        <p>
+          인하옥션에서 등록된 오픈마켓 상품은 개별판매자가 시스템을 이용하여
+          등록한 것으로서 인하옥션은 등록된 상품과 그 내용에 대하여 일체의
+          책임을 지지 않습니다
+        </p>
+        <p>Copyright(c) 2022, inhaauction,lnc All rights reserved.</p>
+      </div>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
