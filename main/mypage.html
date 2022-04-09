@@ -300,6 +300,103 @@
             </div>
           </div>
         </div>
+
+        <!-- 후기작성 Modal -->
+        <div
+          class="modal fade"
+          id="commentWriteModal"
+          tabindex="-1"
+          aria-labelledby="commentWriteModal"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="commentWriteModal">
+                  상점후기 작성
+                </h4>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form action="">
+                  <ul>
+                    <li class="mb-2">
+                      <label for="product-name">상품명</label>
+                      <input type="text" id="product-name" size="50" />
+                    </li>
+                    <li class="mb-2">
+                      <div class="star-input">
+                        <span class="pe-3"
+                          ><label for="title">평점</label></span
+                        >
+                        <span class="input">
+                          <input
+                            type="radio"
+                            name="star-input"
+                            value="1"
+                            id="p1"
+                          />
+                          <label for="p1">1</label>
+
+                          <input
+                            type="radio"
+                            name="star-input"
+                            value="2"
+                            id="p2"
+                          />
+                          <label for="p2">2</label>
+                          <input
+                            type="radio"
+                            name="star-input"
+                            value="3"
+                            id="p3"
+                          />
+                          <label for="p3">3</label>
+
+                          <input
+                            type="radio"
+                            name="star-input"
+                            value="4"
+                            id="p4"
+                          />
+                          <label for="p4">4</label>
+
+                          <input
+                            type="radio"
+                            name="star-input"
+                            value="5"
+                            id="p5"
+                          />
+                          <label for="p5">5</label>
+                        </span>
+                      </div>
+                    </li>
+                    <li>
+                      <label class="pe-3">상세후기</label>
+                    </li>
+                    <li>
+                      <textarea
+                        cols="85"
+                        rows="10"
+                        placeholder="내용을 작성해 주세요."
+                      ></textarea>
+                    </li>
+                  </ul>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">등록</button>
+                <button type="submit" class="btn btn-secondary">취소</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- 탭 메뉴 -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
@@ -408,7 +505,21 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#commentWriteModal"
+                  >
+                    <img
+                      class="d-block m-auto"
+                      src="/images/commentWrite.png"
+                      width="30"
+                      height="15"
+                    />
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td>CSS</td>
