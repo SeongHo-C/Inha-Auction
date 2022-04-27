@@ -132,6 +132,9 @@
           })
           .then(function (data) {
             console.log(data);
+            localStorage.setItem('token', JSON.parse(data).accessToken);
+            localStorage.setItem('id', id);
+            location.href = '/main/search.html';
           })
           .catch(function (error) {
             console.log(error);

@@ -439,25 +439,38 @@
           >
             <table class="tb-w100 text-center">
               <colgroup>
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
-                <col style="width: 25%" />
+                <col style="width: 20%" />
+                <col style="width: 20%" />
+                <col style="width: 20%" />
+                <col style="width: 20%" />
+                <col style="width: 20%" />
               </colgroup>
               <tr>
                 <th>상품명</th>
-                <th>최고입찰가</th>
+                <th>낙찰가</th>
                 <th>경매상태</th>
                 <th>남은 마감시간</th>
+                <th>입찰현황</th>
               </tr>
               <tr>
                 <td>HTML</td>
                 <td></td>
                 <td></td>
                 <td></td>
+                <td>
+                  <button
+                    type="button"
+                    class="btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#bidStateModal"
+                  >
+                    1
+                  </button>
+                </td>
               </tr>
               <tr>
                 <td>CSS</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -467,8 +480,10 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
               </tr>
               <tr>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -485,15 +500,13 @@
             <table class="tb-w100 text-center">
               <colgroup>
                 <col style="width: 20%" />
-                <col style="width: 15%" />
-                <col style="width: 15%" />
-                <col style="width: 15%" />
                 <col style="width: 20%" />
-                <col style="width: 15%" />
+                <col style="width: 20%" />
+                <col style="width: 20%" />
+                <col style="width: 20%" />
               </colgroup>
               <tr>
                 <th>상품명</th>
-                <th>최고입찰가</th>
                 <th>본인입찰가</th>
                 <th>경매상태</th>
                 <th>남은 마감시간</th>
@@ -501,7 +514,6 @@
               </tr>
               <tr>
                 <td>HTML</td>
-                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -527,7 +539,6 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
               </tr>
               <tr>
                 <td>JAVASCRIPT</td>
@@ -535,7 +546,6 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
               </tr>
               <tr>
                 <td></td>
@@ -543,9 +553,82 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
               </tr>
             </table>
+          </div>
+        </div>
+
+        <!-- 입찰현황 Modal -->
+        <div
+          class="modal fade"
+          id="bidStateModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">낙찰후기</h4>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <table class="tb-w100 text-center">
+                  <colgroup>
+                    <col style="width: 25%" />
+                    <col style="width: 25%" />
+                    <col style="width: 25%" />
+                    <col style="width: 25%" />
+                  </colgroup>
+                  <tr>
+                    <th>번호</th>
+                    <th>입찰자 ID</th>
+                    <th>입찰가격</th>
+                    <th>입찰일</th>
+                  </tr>
+                  <tr>
+                    <td>fd</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>dfd</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer" style="justify-content: center">
+                <button type="submit" class="btn btn-primary">채팅하기</button>
+                <button type="submit" class="btn btn-primary">낙찰하기</button>
+                <button
+                  type="submit"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  닫기
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <script>

@@ -5381,7 +5381,7 @@ fieldset:disabled .btn {
   color: #495057;
   text-align: inherit;
 }
-.list-group-item-action:hover,
+.-action:hover,
 .list-group-item-action:focus {
   z-index: 1;
   color: #495057;
@@ -7063,6 +7063,11 @@ fieldset:disabled .btn {
 
 .overflow-visible {
   overflow: visible !important;
+}
+
+.overflowY-scroll {
+  height: 200px;
+  overflow-y: auto !important;
 }
 
 .overflow-scroll {
@@ -11839,4 +11844,17 @@ star-input > .input.focus {
   font-size: 18px;
   text-align: right;
   vertical-align: middle;
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+ul.none {
+  display: none;
+}
+
+ul.block {
+  display: block;
 }
