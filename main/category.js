@@ -1,11 +1,10 @@
+let map = new Map([]);
+
 fetch('http://182.218.194.156:8080/product/categories')
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
-    console.log(data);
-    // 리스트 배경색
-
     // 기존의 배열로부터 새로운 배열을 생성
     const categoryArr = Array.from(data);
 
@@ -49,16 +48,24 @@ fetch('http://182.218.194.156:8080/product/categories')
           if ($(this).index() == 0) {
             for (let i = 0; i < childDepart.length; i++) {
               $('#children2').append(
-                '<li class="list-group-item-action list-group-item">' +
+                '<li class="list-group-item-action list-group-item" id="' +
+                  categoryArr[0].children[0].children[i].id +
+                  '">' +
                   categoryArr[0].children[0].children[i].name +
                   '</li>'
               );
+              //  map.set(
+              //    categoryArr[0].children[0].children[i].name,
+              //    categoryArr[0].children[0].children[i].id
+              //  );
             }
           }
-          $('#children2 li').click(function () {
+          $('#children2 li').on('click', function (event) {
             $('#children2 li').removeClass('list-group-item-info');
             $(this).addClass('list-group-item-info');
-            console.log($(this).text());
+            // register.html에 보내 줄 값
+            //  productId = map.get($(this).text());
+            //  console.log(productId);
           });
         });
         // 의류 대분류
@@ -112,6 +119,7 @@ fetch('http://182.218.194.156:8080/product/categories')
       }
     });
   })
+
   .catch(function (error) {
     console.log(error);
   });

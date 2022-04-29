@@ -235,7 +235,7 @@
           document.getElementById('floatingEmail').value
         );
         formData.append('image', fileInput.files[0]);
-
+        console.log(formData);
         fetch('http://182.218.194.156:8080/auth/register', {
           method: 'post',
           headers: {},
@@ -246,7 +246,7 @@
           })
           .then(function (data) {
             console.log(data);
-            location.href = '/main/search.html';
+            //location.href = '/main/search.html';
           })
           .catch(function (error) {
             console.log(error);
