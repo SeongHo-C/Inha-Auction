@@ -69,34 +69,3 @@ function deleteFile(num) {
   document.querySelector('#file' + num).remove();
   filesArr[num].is_delete = true;
 }
-
-/* 폼 전송 */
-function submitForm() {
-  // 폼데이터 담기
-  var form = document.querySelector('form');
-  var formData = new FormData(form);
-  for (var i = 0; i < filesArr.length; i++) {
-    // 삭제되지 않은 파일만 폼데이터에 담기
-    if (!filesArr[i].is_delete) {
-      formData.append('attach_file', filesArr[i]);
-    }
-  }
-
-  //   $.ajax({
-  //     method: 'POST',
-  //     url: '/register',
-  //     dataType: 'json',
-  //     data: formData,
-  //     async: true,
-  //     timeout: 30000,
-  //     cache: false,
-  //     headers: { 'cache-control': 'no-cache', pragma: 'no-cache' },
-  //     success: function () {
-  //       alert('파일업로드 성공');
-  //     },
-  //     error: function (xhr, desc, err) {
-  //       alert('에러가 발생 하였습니다.');
-  //       return;
-  //     },
-  //   });
-}
