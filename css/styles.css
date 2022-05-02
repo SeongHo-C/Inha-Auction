@@ -11880,3 +11880,11 @@ ul.block {
   color: #ff5353;
   margin-left: 5px;
 }
+
+.detail-image-size {
+  height: 65vh;
+}
+
+.detail-productInfo {
+  height: 55.5vh;
+}

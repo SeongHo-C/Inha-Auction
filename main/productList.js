@@ -44,7 +44,9 @@ fetch('http://182.218.194.156:8080/product?page=1&per_page=12')
       for (let i = 0; i < product.length; i++) {
         let htmlData = '';
         htmlData +=
-          '<div class="col mb-5"><a href="/main/detail.html"><div class="card h-100">';
+          '<div class="col mb-5"><a href="/main/detail.html?id=' +
+          product[i].id +
+          '"><div class="card h-100">';
         htmlData +=
           '<img class="card-img-top card-size" src="http://182.218.194.156:8080/image/product-' +
           product[i].id +
