@@ -162,35 +162,33 @@
                 ></button>
               </div>
               <div class="modal-body mb-3">
-                <form action="">
+                <form id="modalForm" name="modalForm" method="post">
                   <label for="bid-price">입찰 가격</label>
                   <input type="text" id="bid-price" class="me-5" />
-                  <label for="instantly-buy">즉시 구매</label>
+                  <label for="instantly-buy">즉시 구매가</label>
                   <input
                     type="checkbox"
-                    id="instantly-buy"
-                    name="instantly-buy"
-                  />
-                </form>
+                    onclick="toggleTextbox(this)"             
+                  />           
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">입찰하기</button>
+                <button id="btnBid" class="btn btn-primary" data-bs-dismiss="modal" >입찰하기</button>
                 <button
-                  type="submit"
+                  
                   class="btn btn-secondary"
                   data-bs-dismiss="modal"
                 >
                   닫기
                 </button>
+              </form>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- 상품설명 -->
         <div id="productContent" style="width: 100%">
-          <h2>상품설명</h2>
-          <hr />
-          <textarea style="width: 100%; height: auto"></textarea>
+          
         </div>
         </div>
       </div>
@@ -215,5 +213,48 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+    <script>
+      function toggleTextbox(checkbox) {
+        const textbox_elem = document.getElementById('bid-price');
+        const instantPrice_value = document.getElementById("instantPrice_value").firstChild.data;
+        textbox_elem.disabled = checkbox.checked ? true : false;
+        if (textbox_elem.disabled) {
+          textbox_elem.value = instantPrice_value;
+        } else {
+          textbox_elem.value = null;
+          textbox_elem.focus();
+        }
+      }
+
+      var modalForm = document.getElementById('modalForm');
+
+      modalForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+       
+        const bid = document.getElementById('bid-price').value;
+        const memberId = localStorage.getItem('memberId');
+        fetch('http://182.218.194.156:8080/order', {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
+          },
+          body: JSON.stringify({
+            bid: bid,
+            productId: productId,
+            customerId: memberId,
+          }),
+        }) .then(function (response) {
+            return response.text();
+          })
+          .then(function (data) {
+            console.log(data);
+            location.href= '/main/detail.html?id=' + productId;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      })
+    </script>
   </body>
 </html>

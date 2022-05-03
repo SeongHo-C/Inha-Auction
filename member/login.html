@@ -98,7 +98,7 @@
           <label for="floatingPassword">비밀번호</label>
         </div>
 
-        <div class="checkbox mb-3">
+        <div class="checkbox mb-3" hidden>
           <label>
             <input type="checkbox" value="remember-me" /> 자동 로그인
           </label>
@@ -114,8 +114,8 @@
       myForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        var id = document.getElementById('id').value;
-        var password = document.getElementById('password').value;
+        const id = document.getElementById('id').value;
+        const password = document.getElementById('password').value;
 
         fetch('http://182.218.194.156:8080/auth/login', {
           method: 'POST',
