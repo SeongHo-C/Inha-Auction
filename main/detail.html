@@ -7,6 +7,7 @@
     <title>상품정보상세</title>
     <link rel="stylesheet" href="/css/styles.css" />
     <script src="detailProduct.js"></script>
+    <script src="login.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <!--웹 로고-->
     <link rel="icon" type="image/x-icon" href="/images/emblem.ico" />
@@ -18,10 +19,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="/member/login.html">로그인</a>
+              <a id="login" class="nav-link" href="/member/login.html"
+                >로그인</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/member/join.html">회원가입</a>
+              <a id="join" class="nav-link" href="/member/join.html"
+                >회원가입</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/main/mypage.html">마이페이지</a>
@@ -164,7 +169,7 @@
               <div class="modal-body mb-3">
                 <form id="modalForm" name="modalForm" method="post">
                   <label for="bid-price">입찰 가격</label>
-                  <input type="text" id="bid-price" class="me-5" />
+                  <input type="text" id="bid-price" class="me-5" /> 
                   <label for="instantly-buy">즉시 구매가</label>
                   <input
                     type="checkbox"
@@ -172,9 +177,9 @@
                   />           
               </div>
               <div class="modal-footer">
-                <button id="btnBid" class="btn btn-primary" data-bs-dismiss="modal" >입찰하기</button>
+                <button type="button" id="btnBid" class="btn btn-primary" >입찰하기</button>
                 <button
-                  
+                  type="button"
                   class="btn btn-secondary"
                   data-bs-dismiss="modal"
                 >
@@ -214,9 +219,10 @@
       crossorigin="anonymous"
     ></script>
     <script>
+      // 즉시 구매가
       function toggleTextbox(checkbox) {
+      const instantPrice_value = document.getElementById("instantPrice_value").firstChild.data.replace(',','').slice(0, -1);
         const textbox_elem = document.getElementById('bid-price');
-        const instantPrice_value = document.getElementById("instantPrice_value").firstChild.data;
         textbox_elem.disabled = checkbox.checked ? true : false;
         if (textbox_elem.disabled) {
           textbox_elem.value = instantPrice_value;
@@ -226,12 +232,27 @@
         }
       }
 
-      var modalForm = document.getElementById('modalForm');
+      // 시작가보다 높아야함.
+      
+      
+      
+      const modalForm = document.getElementById('btnBid');
 
-      modalForm.addEventListener('submit', function(e) {
+      modalForm.addEventListener('click', function(e) {
         e.preventDefault();
-       
+        const instantPrice_value = document.getElementById("instantPrice_value").firstChild.data.replace(',','').slice(0, -1);
+        const startPrice_value = document.getElementById('startPrice_value').firstChild.data.replace(',','').slice(0, -1);
+        const bidUnit_value = document.getElementById('bidUnit_value').firstChild.data.replace(',','').slice(0, -1);
+
         const bid = document.getElementById('bid-price').value;
+        
+        console.log(bid);
+        console.log(startPrice_value);
+        console.log(startPrice_value <= bid);
+        console.log(bidUnit_value);
+        if(startPrice_value <= bid) {
+          if(bid % bidUnit_value == 0) {
+            if(instantPrice_value >= bid) {
         const memberId = localStorage.getItem('memberId');
         fetch('http://182.218.194.156:8080/order', {
           method: 'post',
@@ -253,7 +274,17 @@
           })
           .catch(function (error) {
             console.log(error);
-          });
+          });} else {
+            alert('즉시 구매가를 넘었습니다.');
+          }
+        } else{
+            alert('입찰 단위에 맞지 않습니다.');
+          }
+        } else {
+          alert('입찰 가격이 시작가보다 낮습니다.');
+        }
+          
+        
       })
     </script>
   </body>

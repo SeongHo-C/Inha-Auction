@@ -8,7 +8,21 @@ fetch('http://182.218.194.156:8080/product?page=1&per_page=12')
     console.log(data.count);
 
     function remaindTime(endDate) {
-      var now = new Date();
+      // 서버 시간
+      var xmlHttpRequest;
+      if (window.XMLHttpRequest) {
+        xmlHttpRequest = new XMLHttpRequest();
+      } else if (window.ActiveXObject) {
+        xmlHttpRequest = new ActiveXObject('Microsoft.XMLHTTP');
+      } else {
+        return;
+      }
+      xmlHttpRequest.open('HEAD', window.location.href.toString(), false);
+      xmlHttpRequest.setRequestHeader('ContentType', 'text/html');
+      xmlHttpRequest.send('');
+
+      var serverDate = xmlHttpRequest.getResponseHeader('Date');
+      var now = new Date(serverDate);
       var end = new Date(endDate);
 
       var nt = now.getTime();

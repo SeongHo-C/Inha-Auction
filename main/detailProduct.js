@@ -46,7 +46,9 @@ fetch('http://182.218.194.156:8080/product/' + productId)
       htmlData +=
         '<colgroup><col style="width: 20%" /><col style="width: 20%" /><col style="width: 60%" /></colgroup>';
       htmlData +=
-        '<thead><tr><th>시작가</th><td>' + product.startPrice + '원</td>';
+        '<thead><tr><th>시작가</th><td id="startPrice_value">' +
+        product.startPrice.toLocaleString() +
+        '원</td>';
       htmlData += '<td id="time" style="color: blue"></td></tr></thead>';
       htmlData += '<tbody"><tr><th>상품번호</th><td>' + product.id + '</td>';
       htmlData +=
@@ -57,11 +59,14 @@ fetch('http://182.218.194.156:8080/product/' + productId)
         ' ' +
         endTime[1] +
         '</td></tr>';
-      htmlData += '<tr><th>입찰단위</th><td>' + product.bidUnit + '</td></tr>';
+      htmlData +=
+        '<tr><th>입찰단위</th><td id="bidUnit_value">' +
+        product.bidUnit.toLocaleString() +
+        '원</td></tr>';
       htmlData +=
         '<tr><th>즉시구매가</th><td id="instantPrice_value">' +
-        product.instantPrice +
-        '</td></tr>';
+        product.instantPrice.toLocaleString() +
+        '원</td></tr>';
       htmlData += '<tr><th>입찰 수</th><td>' + product.bidderCnt + '</td></tr>';
       htmlData +=
         '<tr><th>판매자 ID</th><td>' +
@@ -71,7 +76,20 @@ fetch('http://182.218.194.156:8080/product/' + productId)
     }
 
     function remaindTime(endDate) {
-      var now = new Date();
+      var xmlHttpRequest;
+      if (window.XMLHttpRequest) {
+        xmlHttpRequest = new XMLHttpRequest();
+      } else if (window.ActiveXObject) {
+        xmlHttpRequest = new ActiveXObject('Microsoft.XMLHTTP');
+      } else {
+        return;
+      }
+      xmlHttpRequest.open('HEAD', window.location.href.toString(), false);
+      xmlHttpRequest.setRequestHeader('ContentType', 'text/html');
+      xmlHttpRequest.send('');
+
+      var serverDate = xmlHttpRequest.getResponseHeader('Date');
+      var now = new Date(serverDate);
       var end = new Date(endDate);
 
       var nt = now.getTime();

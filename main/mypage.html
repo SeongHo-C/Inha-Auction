@@ -4,9 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>상품정보상세</title>
+    <title>마이페이지</title>
     <link rel="stylesheet" href="/css/styles.css" />
-    <!--웹 로고-->
+    <script src="mypageTransaction.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="login.js" defer></script>
+    <script src="memberSearch.js"></script>
+    <!--웹 로고-->>
     <link rel="icon" type="image/x-icon" href="/images/emblem.ico" />
   </head>
   <body>
@@ -16,10 +20,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="/member/login.html">로그인</a>
+              <a id="login" class="nav-link" href="/member/login.html"
+                >로그인</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/member/join.html">회원가입</a>
+              <a id="join" class="nav-link" href="/member/join.html"
+                >회원가입</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/main/mypage.html">마이페이지</a>
@@ -78,7 +86,7 @@
         <hr />
         <div class="row gx-4 gx-lg-5 row-cols-xl-2 justify-content-center">
           <div class="col mb-5">
-            <table class="tb-w80">
+            <table id="userInfo" class="tb-w80">
               <tr>
                 <th>이름</th>
                 <td></td>
@@ -437,59 +445,7 @@
             role="tabpanel"
             aria-labelledby="saleList-tab"
           >
-            <table class="tb-w100 text-center">
-              <colgroup>
-                <col style="width: 20%" />
-                <col style="width: 20%" />
-                <col style="width: 20%" />
-                <col style="width: 20%" />
-                <col style="width: 20%" />
-              </colgroup>
-              <tr>
-                <th>상품명</th>
-                <th>낙찰가</th>
-                <th>경매상태</th>
-                <th>남은 마감시간</th>
-                <th>입찰현황</th>
-              </tr>
-              <tr>
-                <td>HTML</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn"
-                    data-bs-toggle="modal"
-                    data-bs-target="#bidStateModal"
-                  >
-                    1
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>CSS</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>JAVASCRIPT</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </table>
+            <table id="sales" class="tb-w100 text-center"></table>
           </div>
           <div
             class="tab-pane fade"
@@ -569,7 +525,7 @@
           <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">낙찰후기</h4>
+                <h4 class="modal-title" id="exampleModalLabel">입찰 현황</h4>
                 <button
                   type="button"
                   class="btn-close"
@@ -669,6 +625,6 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
-    ></script>
+    ></>
   </body>
 </html>
