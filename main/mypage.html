@@ -10,7 +10,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="login.js" defer></script>
     <script src="memberSearch.js"></script>
-    <!--웹 로고-->>
+    <script src="bidModal.js"></script>
+    <!--웹 로고-->
+    >
     <link rel="icon" type="image/x-icon" href="/images/emblem.ico" />
   </head>
   <body>
@@ -534,43 +536,8 @@
                 ></button>
               </div>
               <div class="modal-body">
-                <table class="tb-w100 text-center">
-                  <colgroup>
-                    <col style="width: 25%" />
-                    <col style="width: 25%" />
-                    <col style="width: 25%" />
-                    <col style="width: 25%" />
-                  </colgroup>
-                  <tr>
-                    <th>번호</th>
-                    <th>입찰자 ID</th>
-                    <th>입찰가격</th>
-                    <th>입찰일</th>
-                  </tr>
-                  <tr>
-                    <td>fd</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>dfd</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
+                <table id="currentBidModal" class="tb-w100 text-center">
+
                 </table>
               </div>
               <div class="modal-footer" style="justify-content: center">
@@ -625,6 +592,5 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
-    ></>
-  </body>
+    ></script>
 </html>
