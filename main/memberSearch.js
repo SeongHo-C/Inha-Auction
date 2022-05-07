@@ -8,8 +8,6 @@ fetch('http://182.218.194.156:8080/auth/' + userId, {
     return response.json();
   })
   .then(function (data) {
-    console.log(data);
-
     userAdd();
     function userAdd() {
       const product = data.data;

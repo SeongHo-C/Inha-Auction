@@ -1,7 +1,7 @@
-function currentBidModal(id) {
+function currentBidModal(productid) {
   fetch(
     'http://182.218.194.156:8080/order/sales/bid?page=1&per_page=12&productId=' +
-      id,
+      productid,
     {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -13,12 +13,11 @@ function currentBidModal(id) {
     })
     .then(function (data) {
       console.log(data);
-
       // 입찰 현황
+      const product = data.data;
       bidModalAdd();
       function bidModalAdd() {
         let htmlData = '';
-        const product = data.data;
 
         htmlData +=
           '<colgroup><col style="width: 10%"/><col style="width: 10%"/><col style="width: 20%"/><col style="width: 20%"/><col style="with: 40%"/></colgroup>';
@@ -28,8 +27,8 @@ function currentBidModal(id) {
           const orderDate = product[i].orderDate.split('T');
           htmlData +=
             '<tr><td><input type="checkbox" name="checkBid" value="' +
-            (i + 1) +
-            '" onclick="checkOne(this)"/></td>';
+            i +
+            '"/></td>';
           htmlData +=
             '<td>' +
             (i + 1) +
@@ -46,16 +45,48 @@ function currentBidModal(id) {
             '</td></tr>';
         }
         $('#currentBidModal').html(htmlData);
+
+        $(document).ready(function () {
+          $('input[type="checkbox"][name="checkBid"]').click(function () {
+            if ($(this).prop('checked')) {
+              $('input[type="checkbox"][name="checkBid"]').prop(
+                'checked',
+                false
+              );
+              $(this).prop('checked', true);
+              const checkIdx = $(this).val();
+
+              // 낙찰하기
+              const successBid = document.getElementById('successBid');
+              successBid.addEventListener('click', function (e) {
+                const memberId = localStorage.getItem('memberId');
+
+                fetch('http://182.218.194.156:8080/order/sales', {
+                  method: 'post',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + localStorage.getItem('token'),
+                  },
+                  body: JSON.stringify({
+                    sellerId: memberId,
+                    productId: productid,
+                    bidderId: product[checkIdx].customerId,
+                    bid: product[checkIdx].bid,
+                  }),
+                })
+                  .then(function (response) {
+                    return response.json();
+                  })
+                  .then(function (data) {
+                    console.log(data);
+                    location.href = '/main/mypage.html';
+                  })
+                  .catch(console.log);
+              });
+            }
+          });
+        });
       }
     })
     .catch(console.log);
-}
-
-// 체크박스 하나만 선택
-function checkOne(element) {
-  const checkboxes = document.getElementsByName('checkBid');
-  checkboxes.forEach((cb) => {
-    cb.checked = false;
-  });
-  element.checked = true;
 }

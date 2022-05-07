@@ -1,7 +1,5 @@
 const accessToken = localStorage.getItem('token');
-console.log(accessToken);
 const id = localStorage.getItem('id');
-console.log(id);
 if (accessToken !== null) {
   var login = document.getElementById('login');
   login.className = 'nav-link disabled';

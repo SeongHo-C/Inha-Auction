@@ -455,64 +455,7 @@
             role="tabpanel"
             aria-labelledby="buyList-tab"
           >
-            <table class="tb-w100 text-center">
-              <colgroup>
-                <col style="width: 20%" />
-                <col style="width: 20%" />
-                <col style="width: 20%" />
-                <col style="width: 20%" />
-                <col style="width: 20%" />
-              </colgroup>
-              <tr>
-                <th>상품명</th>
-                <th>본인입찰가</th>
-                <th>경매상태</th>
-                <th>남은 마감시간</th>
-                <th>후기 작성</th>
-              </tr>
-              <tr>
-                <td>HTML</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn"
-                    data-bs-toggle="modal"
-                    data-bs-target="#commentWriteModal"
-                  >
-                    <img
-                      class="d-block m-auto"
-                      src="/images/commentWrite.png"
-                      width="30"
-                      height="15"
-                    />
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>CSS</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>JAVASCRIPT</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </table>
+            <table id="buy" class="tb-w100 text-center"></table>
           </div>
         </div>
 
@@ -542,7 +485,7 @@
               </div>
               <div class="modal-footer" style="justify-content: center">
                 <button type="submit" class="btn btn-primary">채팅하기</button>
-                <button type="submit" class="btn btn-primary">낙찰하기</button>
+                <button id="successBid" type="button" class="btn btn-primary">낙찰하기</button>
                 <button
                   type="submit"
                   class="btn btn-secondary"
@@ -556,7 +499,7 @@
         </div>
         <script>
           let key = '${param.key}';
-          console.log(key);
+         
           if (key === 'saleList') {
             $('#buyList-tab').removeClass('active');
             $('#saleList-tab').addClass('active');
