@@ -110,7 +110,7 @@
     </main>
     <script>
       var myForm = document.getElementById('loginForm');
-
+      console.log(myForm);
       myForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -127,15 +127,18 @@
             password: password,
           }),
         })
-          .then(function (response) {
-            return response.text();
-          })
-          .then(function (data) {
+          .then((response) => response.json())
+          .then((data) => {
             console.log(data);
-            localStorage.setItem('token', JSON.parse(data).accessToken);
+            localStorage.setItem('token', data.accessToken);
             localStorage.setItem('id', id);
-            localStorage.setItem('memberId', JSON.parse(data).memberId);
-            location.href = '/main/search.html';
+            localStorage.setItem('memberId', data.memberId);
+            console.log(data.accessToken);
+            if (data.status !== 401) {
+              location.href = '/main/search.html';
+            } else {
+              alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+            }
           })
           .catch(function (error) {
             console.log(error);

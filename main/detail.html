@@ -131,6 +131,7 @@
               <div class="mt-6">
                 
                 <button
+                  id="Bid"
                   type="button"
                   class="btn btn-primary"
                   data-bs-toggle="modal"
@@ -232,24 +233,20 @@
         }
       }
 
-      // 시작가보다 높아야함.
-      
-      
-      
+      // 입찰하기
       const modalForm = document.getElementById('btnBid');
 
       modalForm.addEventListener('click', function(e) {
         e.preventDefault();
-        const instantPrice_value = document.getElementById("instantPrice_value").firstChild.data.replace(',','').slice(0, -1);
-        const startPrice_value = document.getElementById('startPrice_value').firstChild.data.replace(',','').slice(0, -1);
-        const bidUnit_value = document.getElementById('bidUnit_value').firstChild.data.replace(',','').slice(0, -1);
-
-        const bid = document.getElementById('bid-price').value;
+        const instantPrice_value = Number(document.getElementById("instantPrice_value").firstChild.data.replace(',','').slice(0, -1));
+        const startPrice_value = Number(document.getElementById('startPrice_value').firstChild.data.replace(',','').slice(0, -1));
+        const bidUnit_value = Number(document.getElementById('bidUnit_value').firstChild.data.replace(',','').slice(0, -1));
+        const bid = Number(document.getElementById('bid-price').value);
         
-        console.log(bid);
-        console.log(startPrice_value);
         console.log(startPrice_value <= bid);
-        console.log(bidUnit_value);
+        console.log(bid % bidUnit_value == 0);
+        console.log(instantPrice_value < bid);
+        
         if(startPrice_value <= bid) {
           if(bid % bidUnit_value == 0) {
             if(instantPrice_value >= bid) {

@@ -70,7 +70,9 @@ fetch('http://182.218.194.156:8080/product?page=1&per_page=12')
         htmlData +=
           '<h5>' +
           product[i].startPrice.toLocaleString() +
-          '원</h5><h5>입찰 5명</h5></div></div>';
+          '원</h5><h5>입찰 ' +
+          product[i].bidderCnt +
+          '명</h5></div></div>';
         htmlData +=
           '<div class ="card-footer bg-transparent ms-1"><div class="me-auto">';
         htmlData +=
@@ -90,9 +92,15 @@ fetch('http://182.218.194.156:8080/product?page=1&per_page=12')
     // 마감 시간
     function timeChange() {
       const product = data.data;
-      for (let i = 0; i < product.length; i++) {
-        document.getElementById('endTime' + i).innerHTML =
-          '남은시간: ' + remaindTime(product[i].endDate);
+      for (let i = 0; i < data.count; i++) {
+        const successBid = product[i].successBid;
+        if (successBid == null) {
+          document.getElementById('endTime' + i).innerHTML =
+            '남은시간: ' + remaindTime(product[i].endDate);
+        } else {
+          document.getElementById('endTime' + i).innerHTML =
+            '남은시간: ' + '종료';
+        }
       }
     }
     setInterval(timeChange, 1000);

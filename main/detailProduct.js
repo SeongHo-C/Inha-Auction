@@ -9,8 +9,17 @@ fetch('http://182.218.194.156:8080/product/' + productId)
   .then(function (data) {
     console.log(data);
 
-    // detail.html에서 사용
-    const product = data.data;
+    // 버튼 비활성화
+    btnDisabled();
+
+    function btnDisabled() {
+      const product = data.data;
+      const target = document.getElementById('Bid');
+      console.log(target);
+      if (product.successBid !== null) {
+        target.disabled = true;
+      }
+    }
 
     // 사진 추가하기
     imageAdd();
@@ -75,6 +84,7 @@ fetch('http://182.218.194.156:8080/product/' + productId)
       $('#detailInfo').html(htmlData);
     }
 
+    // 시간 계산하기
     function remaindTime(endDate) {
       var xmlHttpRequest;
       if (window.XMLHttpRequest) {
@@ -121,8 +131,13 @@ fetch('http://182.218.194.156:8080/product/' + productId)
 
     function timeAdd() {
       const product = data.data;
-      document.getElementById('time').innerHTML =
-        '남은시간: ' + remaindTime(product.endDate);
+      const successBid = product.successBid;
+      if (successBid == null) {
+        document.getElementById('time').innerHTML =
+          '남은시간: ' + remaindTime(product.endDate);
+      } else {
+        document.getElementById('time').innerHTML = '남은시간: ' + '종료';
+      }
     }
     setInterval(timeAdd, 1000);
 

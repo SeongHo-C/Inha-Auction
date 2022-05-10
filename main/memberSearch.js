@@ -8,6 +8,7 @@ fetch('http://182.218.194.156:8080/auth/' + userId, {
     return response.json();
   })
   .then(function (data) {
+    useData(data);
     userAdd();
     function userAdd() {
       const product = data.data;
@@ -19,3 +20,8 @@ fetch('http://182.218.194.156:8080/auth/' + userId, {
     }
   })
   .catch(console.log);
+
+// // 내부 함수를 외부에서 사용하는 방법
+// function useData(data) {
+//   console.log(data);
+// }

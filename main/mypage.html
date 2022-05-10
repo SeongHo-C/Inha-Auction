@@ -9,10 +9,11 @@
     <script src="mypageTransaction.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="login.js" defer></script>
+    <script src="memberChange.js" defer></script>
     <script src="memberSearch.js"></script>
     <script src="bidModal.js"></script>
+    
     <!--웹 로고-->
-    >
     <link rel="icon" type="image/x-icon" href="/images/emblem.ico" />
   </head>
   <body>
@@ -252,19 +253,19 @@
                     <legend>
                       <h5>비밀번호 변경</h5>
                     </legend>
-                    <ul id="infoChange">
+                    <ul>
                       <li class="mb-2">
                         <label for="user-pw">현재 비밀번호</label>
-                        <input type="password" id="user-pw" />
+                        <input type="password" id="userPw" />
                       </li>
                       <li class="mb-2">
                         <label for="new-pw">변경 비밀번호</label>
-                        <input type="password" id="new-pw" />
+                        <input type="password" id="newPw" />
                       </li>
                       <li>
                         <label for="new-pw-check">변경 비밀번호 확인</label>
-                        <input type="password" id="new-pw-check" />
-                        <button type="submit" class="btn btn-primary ms-5">
+                        <input type="password" id="newPwCheck" />
+                        <button type="button" id="pwChange" class="btn btn-primary ms-5">
                           비밀번호 변경
                         </button>
                       </li>
@@ -273,14 +274,14 @@
                   <hr />
                   <fieldset>
                     <legend><h5>회원정보 변경</h5></legend>
-                    <ul id="infoChange">
+                    <ul>
                       <li class="mb-2">
                         <label for="user-email">이메일</label>
-                        <input type="email" id="user-email" size="25" />
+                        <input type="email" id="userEmail" size="25" value=""/>
                       </li>
                       <li class="mb-2">
                         <label for="addr">주소</label>
-                        <input type="text" id="addr" size="25" />
+                        <input type="text" id="addr" size="25" value=""/>
                       </li>
                       <li>
                         <label for="phone">전화번호</label>
@@ -289,21 +290,22 @@
                           id="phone"
                           placeholder="하이픈(-) 빼고 입력해 주세요."
                           size="25"
+                          value=""
                         />
                       </li>
                     </ul>
                   </fieldset>
                 </form>
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">
-                    Save changes
+                  <button type="button" id="changeInfo" class="btn btn-primary">
+                    수정
                   </button>
                   <button
                     type="submit"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal"
                   >
-                    Close
+                    닫기
                   </button>
                 </div>
               </div>
@@ -484,7 +486,7 @@
                 </table>
               </div>
               <div class="modal-footer" style="justify-content: center">
-                <button type="submit" class="btn btn-primary">채팅하기</button>
+                
                 <button id="successBid" type="button" class="btn btn-primary">낙찰하기</button>
                 <button
                   type="submit"

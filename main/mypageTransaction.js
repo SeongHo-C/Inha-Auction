@@ -198,7 +198,7 @@ fetch('http://182.218.194.156:8080/order?customerId=' + memberId, {
     function buyList() {
       const product = data.data;
       for (let i = 0; i < data.count; i++) {
-        const successBidPrice = product[i].successBid;
+        const successBid = product[i].successBid;
         if (successBid == null) {
           document.getElementById('buylastTime' + i).innerHTML = remaindTime(
             product[i].endDate
