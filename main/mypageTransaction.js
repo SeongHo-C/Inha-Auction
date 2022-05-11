@@ -53,6 +53,7 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
     return response.json();
   })
   .then(function (data) {
+    console.log(data);
     const product = data.data;
     // 판매 현황
     salesAdd();
@@ -69,13 +70,8 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
         '<tr><th>상품명</th><th>낙찰가</th><th>경매상태</th><th>남은 마감시간</th><th>입찰현황</th></tr>';
       for (let i = 0; i < data.count; i++) {
         htmlData += '<tr><td>' + product[i].productName + '</td>';
-        htmlData +=
-          '<td id ="successBidPrice' +
-          i +
-          '">' +
-          product[i].successBidPrice +
-          '</td>';
-        htmlData += '<td id="state' + i + '">' + product[i].state + '</td>';
+        htmlData += '<td id ="successBidPrice' + i + '"></td>';
+        htmlData += '<td id="state' + product[i].productId + '"></td>';
         htmlData += '<td id="lastTime' + i + '" style="color: blue"></td>';
         htmlData +=
           '<td><button id="' +
@@ -97,17 +93,23 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
           );
         } else {
           document.getElementById('lastTime' + i).innerHTML = '종료';
+          document.getElementById('successBidPrice' + i).innerHTML =
+            product[i].successBidPrice;
         }
 
         const transactionTime = remaindTime(product[i].endDate);
         if (successBidPrice !== null) {
-          document.getElementById('state' + i).innerHTML = '낙찰완료';
+          document.getElementById('state' + product[i].productId).innerHTML =
+            '낙찰완료';
         } else if (transactionTime !== '종료') {
-          document.getElementById('state' + i).innerHTML = '경매중';
+          document.getElementById('state' + product[i].productId).innerHTML =
+            '경매중';
         } else if (transactionTime == '종료' && product[i].bidCnt == 0) {
-          document.getElementById('state' + i).innerHTML = '유찰';
+          document.getElementById('state' + product[i].productId).innerHTML =
+            '유찰';
         } else if (transactionTime == '종료') {
-          document.getElementById('state' + i).innerHTML = '경매종료';
+          document.getElementById('state' + product[i].productId).innerHTML =
+            '경매종료';
         }
       }
     }
@@ -138,8 +140,12 @@ fetch('http://182.218.194.156:8080/order?customerId=' + memberId, {
         '<tr><th>상품명</th><th>본인입찰가</th><th>경매상태</th><th>남은 마감시간</th><th>후기작성</th></tr>';
       for (let i = 0; i < data.count; i++) {
         htmlData += '<tr><td>' + product[i].productName + '</td>';
-        htmlData +=
-          '<td>' + product[i].bid + '</td><td id="buystate' + i + '">null</td>';
+        htmlData += '<td>' + product[i].bid + '</td>';
+        if (product[i].successBidderId == memberId) {
+          htmlData += '<td id="buystate' + i + '" style="color: red"></td>';
+        } else {
+          htmlData += '<td id="buystate' + i + '"></td>';
+        }
         htmlData += '<td id="buylastTime' + i + '" style="color: blue"></td>';
         htmlData +=
           '<td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#commentWriteModal">';

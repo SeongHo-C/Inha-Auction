@@ -13,6 +13,20 @@ function currentBidModal(productid) {
     })
     .then(function (data) {
       console.log(data);
+
+      // 낙찰 완료된 상품 버튼 비활성화하기
+      currentBidDisabled();
+      function currentBidDisabled() {
+        const stateChk = document.getElementById('state' + productid).firstChild
+          .data;
+        const target = document.getElementById('successBid');
+        if (stateChk == '낙찰완료') {
+          target.disabled = true;
+        } else {
+          target.disabled = false;
+        }
+      }
+
       // 입찰 현황
       const product = data.data;
       bidModalAdd();
