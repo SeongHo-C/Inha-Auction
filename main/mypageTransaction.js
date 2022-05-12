@@ -54,7 +54,7 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
   })
   .then(function (data) {
     console.log(data);
-    const product = data.data;
+
     // 판매 현황
     salesAdd();
 
@@ -70,8 +70,12 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
         '<tr><th>상품명</th><th>낙찰가</th><th>경매상태</th><th>남은 마감시간</th><th>입찰현황</th></tr>';
       for (let i = 0; i < data.count; i++) {
         htmlData += '<tr><td>' + product[i].productName + '</td>';
-        htmlData += '<td id ="successBidPrice' + i + '"></td>';
-        htmlData += '<td id="state' + product[i].productId + '"></td>';
+        htmlData += '<td id ="successBidPrice' + i + '">';
+
+        if (product[i].successBidPrice !== null) {
+          htmlData += product[i].successBidPrice;
+        }
+        htmlData += '</td><td id="state' + product[i].productId + '"></td>';
         htmlData += '<td id="lastTime' + i + '" style="color: blue"></td>';
         htmlData +=
           '<td><button id="' +
@@ -86,6 +90,7 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
     function salesList() {
       const product = data.data;
       for (let i = 0; i < data.count; i++) {
+        // 경매 남은 시간
         const successBidPrice = product[i].successBidPrice;
         if (successBidPrice == null) {
           document.getElementById('lastTime' + i).innerHTML = remaindTime(
@@ -93,10 +98,9 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
           );
         } else {
           document.getElementById('lastTime' + i).innerHTML = '종료';
-          document.getElementById('successBidPrice' + i).innerHTML =
-            product[i].successBidPrice;
         }
 
+        // 경매 상태
         const transactionTime = remaindTime(product[i].endDate);
         if (successBidPrice !== null) {
           document.getElementById('state' + product[i].productId).innerHTML =
@@ -147,11 +151,20 @@ fetch('http://182.218.194.156:8080/order?customerId=' + memberId, {
           htmlData += '<td id="buystate' + i + '"></td>';
         }
         htmlData += '<td id="buylastTime' + i + '" style="color: blue"></td>';
-        htmlData +=
-          '<td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#commentWriteModal">';
-        htmlData +=
-          '<img class="d-block m-auto" src="/images/commentWrite.png" width="30" height="15"/>';
-        htmlData += '</button></td></tr>';
+        if (product[i].successBidderId == memberId) {
+          htmlData +=
+            '<td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#commentWriteModal" ';
+          htmlData +=
+            'onclick="reviewModal(' +
+            product[i].productId +
+            ',' +
+            product[i].sellerId +
+            ')">';
+          console.log(product[i].productName);
+          htmlData +=
+            '<img class="d-block m-auto" src="/images/commentWrite.png" width="30" height="15"/>';
+          htmlData += '</button></td></tr>';
+        }
       }
       $('#buy').html(htmlData);
     }

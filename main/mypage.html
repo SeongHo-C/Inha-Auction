@@ -12,7 +12,8 @@
     <script src="memberChange.js" defer></script>
     <script src="memberSearch.js" defer></script>
     <script src="bidModal.js"></script>
-    
+    <script src="reviewWrite.js"></script>
+
     <!--웹 로고-->
     <link rel="icon" type="image/x-icon" href="/images/emblem.ico" />
   </head>
@@ -265,7 +266,11 @@
                       <li>
                         <label for="new-pw-check">변경 비밀번호 확인</label>
                         <input type="password" id="newPwCheck" />
-                        <button type="button" id="pwChange" class="btn btn-primary ms-5">
+                        <button
+                          type="button"
+                          id="pwChange"
+                          class="btn btn-primary ms-5"
+                        >
                           비밀번호 변경
                         </button>
                       </li>
@@ -277,11 +282,11 @@
                     <ul>
                       <li class="mb-2">
                         <label for="user-email">이메일</label>
-                        <input type="email" id="userEmail" size="25" value=""/>
+                        <input type="email" id="userEmail" size="25" value="" />
                       </li>
                       <li class="mb-2">
                         <label for="addr">주소</label>
-                        <input type="text" id="addr" size="25" value=""/>
+                        <input type="text" id="addr" size="25" value="" />
                       </li>
                       <li>
                         <label for="phone">전화번호</label>
@@ -339,60 +344,22 @@
                   <ul>
                     <li class="mb-2">
                       <label for="product-name">상품명</label>
-                      <input type="text" id="product-name" size="50" />
+                      <input type="text" id="product-name" size="50" readonly />
                     </li>
                     <li class="mb-2">
-                      <div class="star-input">
-                        <span class="pe-3"
-                          ><label for="title">평점</label></span
-                        >
-                        <span class="input">
-                          <input
-                            type="radio"
-                            name="star-input"
-                            value="1"
-                            id="p1"
-                          />
-                          <label for="p1">1</label>
-
-                          <input
-                            type="radio"
-                            name="star-input"
-                            value="2"
-                            id="p2"
-                          />
-                          <label for="p2">2</label>
-                          <input
-                            type="radio"
-                            name="star-input"
-                            value="3"
-                            id="p3"
-                          />
-                          <label for="p3">3</label>
-
-                          <input
-                            type="radio"
-                            name="star-input"
-                            value="4"
-                            id="p4"
-                          />
-                          <label for="p4">4</label>
-
-                          <input
-                            type="radio"
-                            name="star-input"
-                            value="5"
-                            id="p5"
-                          />
-                          <label for="p5">5</label>
-                        </span>
-                      </div>
+                      <label for="grade">평점</label>
+                      <input type="radio" name="grade" value="1" />1
+                      <input type="radio" name="grade" value="2" />2
+                      <input type="radio" name="grade" value="3" />3
+                      <input type="radio" name="grade" value="4" />4
+                      <input type="radio" name="grade" value="5" checked />5
                     </li>
                     <li>
                       <label class="pe-3">상세후기</label>
                     </li>
                     <li>
                       <textarea
+                        id="reviewText"
                         cols="85"
                         rows="10"
                         placeholder="내용을 작성해 주세요."
@@ -402,7 +369,9 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">등록</button>
+                <button id="registration" type="button" class="btn btn-primary">
+                  등록
+                </button>
                 <button type="submit" class="btn btn-secondary">취소</button>
               </div>
             </div>
@@ -481,13 +450,12 @@
                 ></button>
               </div>
               <div class="modal-body">
-                <table id="currentBidModal" class="tb-w100 text-center">
-
-                </table>
+                <table id="currentBidModal" class="tb-w100 text-center"></table>
               </div>
               <div class="modal-footer" style="justify-content: center">
-                
-                <button id="successBid" type="button" class="btn btn-primary">낙찰하기</button>
+                <button id="successBid" type="button" class="btn btn-primary">
+                  낙찰하기
+                </button>
                 <button
                   type="submit"
                   class="btn btn-secondary"
@@ -501,7 +469,7 @@
         </div>
         <script>
           let key = '${param.key}';
-         
+
           if (key === 'saleList') {
             $('#buyList-tab').removeClass('active');
             $('#saleList-tab').addClass('active');
@@ -538,4 +506,5 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+  </body>
 </html>
