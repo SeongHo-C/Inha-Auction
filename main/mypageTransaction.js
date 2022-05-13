@@ -69,18 +69,41 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
       htmlData +=
         '<tr><th>상품명</th><th>낙찰가</th><th>경매상태</th><th>남은 마감시간</th><th>입찰현황</th></tr>';
       for (let i = 0; i < data.count; i++) {
+        const transactionTime = remaindTime(product[i].endDate);
+
         htmlData += '<tr><td>' + product[i].productName + '</td>';
         htmlData += '<td id ="successBidPrice' + i + '">';
 
         if (product[i].successBidPrice !== null) {
           htmlData += product[i].successBidPrice;
         }
-        htmlData += '</td><td id="state' + product[i].productId + '"></td>';
-        htmlData += '<td id="lastTime' + i + '" style="color: blue"></td>';
+
+        // 경매상태
+        if (product[i].successBidPrice !== null) {
+          htmlData +=
+            '</td><td id="state' + product[i].productId + '">낙찰완료';
+        } else if (transactionTime !== '종료') {
+          htmlData += '</td><td id="state' + product[i].productId + '">경매중';
+        } else if (transactionTime == '종료' && product[i].bidCnt == 0) {
+          htmlData += '</td><td id="state' + product[i].productId + '">유찰';
+        } else if (transactionTime == '종료') {
+          htmlData +=
+            '</td><td id="state' + product[i].productId + '">경매종료';
+        }
+
+        // 남은 마감시간
+        htmlData += '</td><td id="lastTime' + i + '"';
+        if (product[i].successBidPrice == null) {
+          htmlData += 'style="color: blue">' + remaindTime(product[i].endDate);
+        } else {
+          htmlData += 'style="color: blue">종료';
+        }
         htmlData +=
-          '<td><button id="' +
+          '</td><td><button id="' +
           product[i].productId +
-          '" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#bidStateModal" onClick="currentBidModal(this.id)">' +
+          '" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#bidStateModal" onClick="currentBidModal(this.id, ' +
+          product[i].instantPrice +
+          ')">' +
           product[i].bidCnt +
           '</button></td></tr>';
       }
@@ -90,7 +113,7 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
     function salesList() {
       const product = data.data;
       for (let i = 0; i < data.count; i++) {
-        // 경매 남은 시간
+        // 경매 남은 시간 실시간
         const successBidPrice = product[i].successBidPrice;
         if (successBidPrice == null) {
           document.getElementById('lastTime' + i).innerHTML = remaindTime(
@@ -100,7 +123,7 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
           document.getElementById('lastTime' + i).innerHTML = '종료';
         }
 
-        // 경매 상태
+        // 경매 상태 실시간
         const transactionTime = remaindTime(product[i].endDate);
         if (successBidPrice !== null) {
           document.getElementById('state' + product[i].productId).innerHTML =
@@ -153,20 +176,43 @@ fetch('http://182.218.194.156:8080/order?customerId=' + memberId, {
         htmlData += '<td id="buylastTime' + i + '" style="color: blue"></td>';
         if (product[i].successBidderId == memberId) {
           htmlData +=
-            '<td><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#commentWriteModal" ';
+            '<td><button id="reviewWrite' +
+            i +
+            '" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#commentWriteModal" ';
           htmlData +=
             'onclick="reviewModal(' +
             product[i].productId +
             ',' +
             product[i].sellerId +
+            ',' +
+            '`' +
+            product[i].productName +
+            '`' +
             ')">';
-          console.log(product[i].productName);
+
           htmlData +=
             '<img class="d-block m-auto" src="/images/commentWrite.png" width="30" height="15"/>';
           htmlData += '</button></td></tr>';
         }
       }
       $('#buy').html(htmlData);
+    }
+
+    // 후기작성 버튼 비활성화하기
+    reviewWriteDisabled();
+    function reviewWriteDisabled() {
+      const product = data.data;
+
+      for (let i = 0; i < data.count; i++) {
+        const target = document.getElementById('reviewWrite' + i);
+        if (product[i].successBidderId == memberId) {
+          if (product[i].reviewYn == 'Y') {
+            target.disabled = true;
+          } else {
+            target.disabled = false;
+          }
+        }
+      }
     }
 
     // 남은 마감시간
@@ -214,10 +260,12 @@ fetch('http://182.218.194.156:8080/order?customerId=' + memberId, {
       }
     }
 
+    // 판매현황 실시간
     function buyList() {
       const product = data.data;
       for (let i = 0; i < data.count; i++) {
         const successBid = product[i].successBid;
+        const successBidderId = product[i].successBidderId;
         if (successBid == null) {
           document.getElementById('buylastTime' + i).innerHTML = remaindTime(
             product[i].endDate
@@ -227,14 +275,12 @@ fetch('http://182.218.194.156:8080/order?customerId=' + memberId, {
         }
 
         const transactionTime = remaindTime(product[i].endDate);
-        if (successBid !== null) {
-          document.getElementById('buystate' + i).innerHTML = '낙찰완료';
-        } else if (transactionTime !== '종료') {
+        if (successBid !== null && successBidderId == memberId) {
+          document.getElementById('buystate' + i).innerHTML = '낙찰';
+        } else if (transactionTime !== '종료' && successBid == null) {
           document.getElementById('buystate' + i).innerHTML = '경매중';
-        } else if (transactionTime == '종료' && product[i].bidCnt == 0) {
+        } else {
           document.getElementById('buystate' + i).innerHTML = '유찰';
-        } else if (transactionTime == '종료') {
-          document.getElementById('buystate' + i).innerHTML = '경매종료';
         }
       }
     }

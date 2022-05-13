@@ -16,7 +16,7 @@ fetch('http://182.218.194.156:8080/product/' + productId)
       const product = data.data;
       const target = document.getElementById('Bid');
       console.log(target);
-      if (product.successBid !== null) {
+      if (product.successBid !== null || product.sellerId == id) {
         target.disabled = true;
       }
     }

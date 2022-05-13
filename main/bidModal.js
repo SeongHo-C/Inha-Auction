@@ -1,4 +1,4 @@
-function currentBidModal(productid) {
+function currentBidModal(productid, instantPrice) {
   fetch(
     'http://182.218.194.156:8080/order/sales/bid?page=1&per_page=12&productId=' +
       productid,
@@ -17,13 +17,18 @@ function currentBidModal(productid) {
       // 낙찰 완료된 상품 버튼 비활성화하기
       currentBidDisabled();
       function currentBidDisabled() {
+        const product = data.data;
         const stateChk = document.getElementById('state' + productid).firstChild
           .data;
-        const target = document.getElementById('successBid');
-        if (stateChk == '낙찰완료') {
-          target.disabled = true;
-        } else {
-          target.disabled = false;
+        for (let i = 0; i < data.count; i++) {
+          console.log(instantPrice);
+
+          const target = document.getElementById('successBid');
+          if (stateChk == '낙찰완료' || instantPrice == product[i].bid) {
+            target.disabled = true;
+          } else {
+            target.disabled = false;
+          }
         }
       }
 
