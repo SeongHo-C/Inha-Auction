@@ -61,7 +61,9 @@ fetch('http://182.218.194.156:8080/product/' + productId)
       htmlData += '<td id="time" style="color: blue"></td></tr></thead>';
       htmlData += '<tbody"><tr><th>상품번호</th><td>' + product.id + '</td>';
       htmlData +=
-        '<td><a href="/main/notify.html"><button type="button">신고</button></a></td></tr>';
+        '<td><a href="/main/notify.html?id=' +
+        product.id +
+        '"><button type="button">신고</button></a></td></tr>';
       htmlData +=
         '<tr><th>마감기한</th><td colspan="2">' +
         endTime[0] +

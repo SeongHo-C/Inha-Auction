@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>상품정보상세</title>
     <link rel="stylesheet" href="/css/styles.css" />
+    
+    <script src="login.js" defer></script>
+    <script src="notify.js" defer></script>
+    <script src="addFile.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
     <!--웹 로고-->
     <link rel="icon" type="image/x-icon" href="/images/emblem.ico" />
   </head>
@@ -16,10 +22,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="/member/login.html">로그인</a>
+              <a id="login" class="nav-link" href="/member/login.html"
+                >로그인</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/member/join.html">회원가입</a>
+              <a id="join" class="nav-link" href="/member/join.html"
+                >회원가입</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/main/mypage.html">마이페이지</a>
@@ -74,15 +84,27 @@
     </header>
     <section class="py-3">
       <div class="container px-4 px-lg-5 mt-3">
+        <form 
+            id="notifyInfo"
+            name="notifyInfo"
+            method="post"
+            onsubmit="return false;"
+            enctype="multipart/form-data">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col mb-5">
             <h2>신고</h2>
             <hr />
-            <form action="">
+            
               <ul id="notify">
                 <li class="mb-2">
                   <label for="product-num">상품번호</label>
-                  <input type="text" id="product-num" size="10" readonly />
+                  <input
+                    type="text"
+                    id="product-num"
+                    size="10"
+                    class="text-center"
+                    readonly
+                  />
                 </li>
                 <li class="mb-2">
                   <label for="title">제목</label>
@@ -92,33 +114,47 @@
                   <label for="user">작성자</label>
                   <input
                     type="text"
-                    id="new-pw-check"
-                    value="박인우"
+                    id="writerId"
                     class="text-center"
-                    size="10"
+                    size="15"
                     readonly
                   />
                 </li>
                 <li>
                   <label for="notify-content">내용</label>
                   <textarea
+                    id="notifyContent"
                     cols="100"
                     rows="10"
                     placeholder="신고할 내용을 작성해 주세요."
                   ></textarea>
                 </li>
                 <li>
-                  <label for="file-register">파일첨부</label>
-                  <input type="file" />
+                  <label for="notifyFile">파일첨부</label>
+                  <input
+                    id="notifyFile"
+                    type="file"
+                    onchange="addFile(this);"
+                    multiple
+                  />
+                </li>
+                <li>
+                  <label for="">선택된 파일</label>
+                  <div class="file-list" style="width: 66.5%"></div>
                 </li>
               </ul>
-            </form>
+            
           </div>
         </div>
         <div class="text-center row-cols-7">
-          <button type="submit" class="btn btn-primary">등록</button>
-          <button type="submit" class="btn btn-secondary">취소</button>
+          <button id="registration" type="submit" class="btn btn-primary">
+            등록
+          </button>
+          <button type="button" class="btn btn-secondary" onclick="back()">
+            취소
+          </button>
         </div>
+        </form>
       </div>
     </section>
     <footer class="py-5 bg-dark">
@@ -140,6 +176,6 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
-    ></script>
+    ></scripta>
   </body>
 </html>
