@@ -128,8 +128,9 @@
           }),
         })
           .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
+          .then((result) => {
+            const data = result.data;
+            console.log(result);
             localStorage.setItem('token', data.accessToken);
             localStorage.setItem('id', id);
             localStorage.setItem('memberId', data.memberId);
@@ -138,8 +139,10 @@
             if (data.status !== 401) {
               if (id == 'admin') {
                 location.href = '/admin/member.html';
+                alert('관리자입니다.');
               } else {
                 location.href = '/main/search.html';
+                alert('회원입니다.');
               }
             } else {
               alert('아이디 또는 비밀번호가 일치하지 않습니다.');
