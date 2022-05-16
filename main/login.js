@@ -19,4 +19,5 @@ logout.addEventListener('click', () => {
   login.innerHTML = `로그인`;
 
   join.innerHTML = '회원가입';
+  alert('로그아웃 되었습니다.');
 });

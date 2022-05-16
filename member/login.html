@@ -134,8 +134,13 @@
             localStorage.setItem('id', id);
             localStorage.setItem('memberId', data.memberId);
             console.log(data.accessToken);
+
             if (data.status !== 401) {
-              location.href = '/main/search.html';
+              if (id == 'admin') {
+                location.href = '/admin/member.html';
+              } else {
+                location.href = '/main/search.html';
+              }
             } else {
               alert('아이디 또는 비밀번호가 일치하지 않습니다.');
             }
