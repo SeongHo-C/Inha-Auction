@@ -1,13 +1,12 @@
 // 체크박스 하나만 가능하도록
 
 $(function () {
-  $('input[type="checkbox"][name="checkBid"]').click(function () {
+  $(document).on('click', '#check', function () {
     if ($(this).prop('checked')) {
-      $('input[type="checkbox"][name="checkBid"]').prop('checked', false);
+      $('#check').prop('checked', false);
       $(this).prop('checked', true);
       const checkIdx = $(this).val();
       console.log(checkIdx);
-
       // 탈퇴하기
       const deleteBtn = document.getElementById('deleteBtn');
       deleteBtn.addEventListener('click', (e) => {

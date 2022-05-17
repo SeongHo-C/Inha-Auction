@@ -15,7 +15,7 @@ fetch('http://182.218.194.156:8080/admin/members?page=1&per_page=10', {
 
       for (let i = 0; i < data.count; i++) {
         if (member[i].state !== 'ROLE_ADMIN') {
-          htmlData += `<tr><td><input type="checkbox" name="checkBid" value="${member[i].id}"</td>
+          htmlData += `<tr><td><input id="check" type="checkbox" name="checkMember" value="${member[i].id}"</td>
           <td>${member[i].name}</td><td>${member[i].department}</td>
         <td>${member[i].loginId}</td><td>${member[i].phone}</td>
         <td>${member[i].address}</td><td>${member[i].email}</td>
