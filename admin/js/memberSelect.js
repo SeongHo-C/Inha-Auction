@@ -21,8 +21,14 @@ fetch('http://182.218.194.156:8080/admin/members?page=1&per_page=10', {
         <td>${member[i].address}</td><td>${member[i].email}</td>
         <td><img class="card-size" src="http://182.218.194.156:8080/image/member-${member[i].id}.png?type=auth" alt="이미지 없음"/></td>
         <td><select name="state" id="state-select${member[i].id}" onchange="changeState(${member[i].id})">
-        <option value="ROLE_USER">승인 회원</option><option value="ROLE_ANONYMOUS">미승인 회원</option><option value="ROLE_ADMIN">관리자</option></select></td>
-        </tr>`;
+        <option value="ROLE_USER">승인 회원</option><option value="ROLE_ANONYMOUS">미승인 회원</option><option value="ROLE_ADMIN">관리자</option></select><br>`;
+
+          if (member[i].banDate !== null) {
+            let date = new Date(member[i].banDate).toLocaleDateString();
+
+            htmlData += `<button class="btn btn-primary text-center p-0 mt-2" onclick="stopAlert('${date}')">정지중</button>`;
+          }
+          htmlData += `</td></tr>`;
         } else {
         }
       }
@@ -48,3 +54,9 @@ fetch('http://182.218.194.156:8080/admin/members?page=1&per_page=10', {
     }
   })
   .catch(console.log);
+
+// 정지 해제일 알려주기
+function stopAlert(date) {
+  console.log(date);
+  alert(`정지해제일은 ${date} 입니다.`);
+}
