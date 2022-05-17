@@ -63,6 +63,8 @@ fetch('http://182.218.194.156:8080/product/' + productId)
       htmlData +=
         '<td><a href="/main/notify.html?id=' +
         product.id +
+        '&sellerId=' +
+        product.sellerId +
         '"><button type="button">신고</button></a></td></tr>';
       htmlData +=
         '<tr><th>마감기한</th><td colspan="2">' +

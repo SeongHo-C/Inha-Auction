@@ -5,6 +5,7 @@ $(document).ready(function () {
       $('input[type="checkbox"][name="checkBid"]').prop('checked', false);
       $(this).prop('checked', true);
       const checkIdx = $(this).val();
+      console.log(checkIdx);
 
       // 탈퇴하기
       const deleteBtn = document.getElementById('deleteBtn');

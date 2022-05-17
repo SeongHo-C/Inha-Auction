@@ -55,7 +55,7 @@ fetch('http://182.218.194.156:8080/product?page=1&per_page=12')
     function htmlAdd() {
       let testHtml = '';
       const product = data.data;
-      for (let i = 0; i < product.length; i++) {
+      for (let i = 0; i < data.count; i++) {
         let htmlData = '';
         htmlData +=
           '<div class="col mb-5"><a href="/main/detail.html?id=' +
@@ -77,7 +77,7 @@ fetch('http://182.218.194.156:8080/product?page=1&per_page=12')
           '<div class ="card-footer bg-transparent ms-1"><div class="me-auto">';
         htmlData +=
           '<h6 class="mt-2"> 판매자아이디: ' +
-          product[i].sellerId +
+          product[i].sellerLoginId +
           '</h6><h6 id="endTime' +
           i +
           '"> 마감시간: 0일 00시간 00분 00초</h6>';

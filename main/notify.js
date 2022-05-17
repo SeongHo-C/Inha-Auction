@@ -1,6 +1,11 @@
 const url = location.href;
-const productIdSplit = url.split('=');
-const productId = productIdSplit[1];
+const urlSplit = url.split('?');
+const productSeller = urlSplit[1];
+const productSellerDivision = productSeller.split('&');
+const product = productSellerDivision[0].split('=');
+const seller = productSellerDivision[1].split('=');
+const productId = product[1];
+const sellerId = seller[1];
 
 const productIdVal = document.getElementById('product-num');
 console.log(productIdVal);
@@ -21,8 +26,14 @@ registrationBtn.addEventListener('submit', function (e) {
 
   let formData = new FormData();
   formData.append('productId', productId);
+  console.log(productId);
   formData.append('title', document.getElementById('title').value);
+  console.log(document.getElementById('title').value);
   formData.append('writerId', memberId);
+  console.log(memberId);
+  formData.append('reportedId', sellerId);
+  console.log(sellerId);
+
   formData.append('content', document.getElementById('notifyContent').value);
   for (let i = 0; i < filesArr.length; i++) {
     if (!filesArr[i].is_delete) {

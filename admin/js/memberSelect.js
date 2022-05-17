@@ -21,7 +21,7 @@ fetch('http://182.218.194.156:8080/admin/members?page=1&per_page=10', {
         <td>${member[i].address}</td><td>${member[i].email}</td>
         <td><img class="card-size" src="http://182.218.194.156:8080/image/member-${member[i].id}.png?type=auth" alt="이미지 없음"/></td>
         <td><select name="state" id="state-select${member[i].id}" onchange="changeState(${member[i].id})">
-        <option value="ROLE_USER">ROLE_USER</option><option value="ROLE_ANONYMOUS">ROLE_ANONYMOUS</option><option value="ROLE_ADMIN">ROLE_ADMIN</option></select></td>
+        <option value="ROLE_USER">승인 회원</option><option value="ROLE_ANONYMOUS">미승인 회원</option><option value="ROLE_ADMIN">관리자</option></select></td>
         </tr>`;
         } else {
         }
