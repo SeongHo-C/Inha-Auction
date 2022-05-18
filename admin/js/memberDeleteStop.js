@@ -3,7 +3,7 @@
 $(function () {
   $(document).on('click', '#check', function () {
     if ($(this).prop('checked')) {
-      $('#check').prop('checked', false);
+      $('input[type="checkbox"][name="checkMember"]').prop('checked', false);
       $(this).prop('checked', true);
       const checkIdx = $(this).val();
       console.log(checkIdx);

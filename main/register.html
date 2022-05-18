@@ -268,33 +268,25 @@
 
         var formData = new FormData();
         formData.append('name', document.getElementById('title').value);
-        console.log(document.getElementById('title').value);
         formData.append(
           'startPrice',
           document.getElementById('startPrice').value
         );
-        console.log(document.getElementById('startPrice').value);
         formData.append('categoryId', categoryId);
-        console.log(categoryId);
         formData.append(
           'content',
           document.getElementById('productContent').value
         );
-        console.log(document.getElementById('productContent').value);
         formData.append(
           'instantPrice',
           document.getElementById('instantPrice').value
         );
-        console.log(document.getElementById('instantPrice').value);
         formData.append(
           'endDate',
           document.getElementById('endDate').value + ':00'
         );
-        console.log(document.getElementById('endDate').value + ':00');
         formData.append('bidUnit', document.getElementById('bidUnit').value);
-        console.log(document.getElementById('bidUnit').value);
         formData.append('sellerId', localStorage.getItem('memberId'));
-        console.log(localStorage.getItem('memberId'));
         for (let i = 0; i < filesArr.length; i++) {
           if (!filesArr[i].is_delete) {
             formData.append('files', filesArr[i]);

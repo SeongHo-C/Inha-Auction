@@ -48,14 +48,15 @@ function currentBidModal(productid, instantPrice) {
             '<tr><td><input type="checkbox" name="checkBid" value="' +
             i +
             '"/></td>';
+          htmlData += '<td>' + (i + 1) + '</td><td>';
+          if (product[i].customerLoginId !== null) {
+            htmlData += product[i].customerLoginId;
+          } else {
+            htmlData += '탈퇴한 회원';
+          }
+
           htmlData +=
-            '<td>' +
-            (i + 1) +
             '</td><td>' +
-            product[i].customerLoginId +
-            '</td>';
-          htmlData +=
-            '<td>' +
             product[i].bid +
             '</td><td>' +
             orderDate[0] +
