@@ -8,6 +8,8 @@ fetch('http://182.218.194.156:8080/chat/room?memberId=' + memberId, {
   .then((data) => {
     console.log(data.data);
     // 채팅방 목록 조회
+    sendMessage(data);
+
     roomListAdd();
     function roomListAdd() {
       let htmlData = '';
@@ -17,10 +19,14 @@ fetch('http://182.218.194.156:8080/chat/room?memberId=' + memberId, {
                     <input type="text" class="form-control my-3" placeholder="Search..."/></div></div></div>`;
       for (let i = 0; i < data.count; i++) {
         htmlData += `
-          <a href="#" class="list-group-item list-group-item-action border-1">
-          <div class="d-flex align-items-start"><div class="flex-grow-1 ml-3">
-            ${info[i].seller.name}
-            <div class="small"><span class="fas fa-circle chat-online"></span> Online</div></div></div></a>
+          <a href="#?${info[i].id}" class="list-group-item list-group-item-action border-1">
+          <div class="d-flex align-items-start"><div class="flex-grow-1 ml-3">`;
+        if (memberId == info[i].seller.id) {
+          htmlData += `${info[i].customer.name}`;
+        } else {
+          htmlData += `${info[i].seller.name}`;
+        }
+        htmlData += `<div class="small"><span class="fas fa-circle chat-online"></span>상품: ${info[i].product.name}</div></div></div></a>
           `;
       }
       htmlData += `<hr class="d-block d-lg-none mt-1 mb-0" />`;
@@ -28,3 +34,37 @@ fetch('http://182.218.194.156:8080/chat/room?memberId=' + memberId, {
     }
   })
   .catch(console.log);
+
+// 메시지 전송
+function sendMessage(data) {
+  const sendBtn = document.querySelector('#sendBtn');
+  sendBtn.addEventListener('click', function (e) {
+    const url = location.href;
+    const split = url.split('?');
+    const roomId = split[1];
+    let receiverId = '';
+    const room = data.data;
+    for (let i = 0; i < data.count; i++) {
+      if (memberId == room[i].customer.id) {
+        receiverId = room[i].seller.id;
+      } else {
+        receiverId = room[i].customer.id;
+      }
+    }
+
+    data = {
+      message: $('#message').val(),
+      senderId: memberId,
+      receiverId: receiverId,
+      roomId: roomId,
+    };
+
+    stompClient.send('/app/chat/send', {}, JSON.stringify(data));
+
+    $('#message').val('');
+  });
+}
+
+function messageBox(data) {
+  console.log(data);
+}
