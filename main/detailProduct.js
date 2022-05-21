@@ -187,6 +187,7 @@ function roomsCreate(data) {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        location.href = '/chat/chat.html';
       })
       .catch(console.log);
   });
