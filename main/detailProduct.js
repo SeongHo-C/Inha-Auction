@@ -9,6 +9,8 @@ fetch('http://182.218.194.156:8080/product/' + productId)
   .then(function (data) {
     console.log(data);
 
+    roomsCreate(data);
+
     // 버튼 비활성화
     btnDisabled();
 
@@ -159,3 +161,33 @@ fetch('http://182.218.194.156:8080/product/' + productId)
     }
   })
   .catch(console.log);
+
+// 채팅방 생성
+function roomsCreate(data) {
+  const product = data.data;
+  const customerId = localStorage.getItem('memberId');
+
+  const roomCreate = document.querySelector('#roomCreate');
+  console.log(roomCreate);
+  roomCreate.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    fetch('http://182.218.194.156:8080/chat/room', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+      body: JSON.stringify({
+        sellerId: product.sellerId,
+        customerId: customerId,
+        productId: product.id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch(console.log);
+  });
+}
