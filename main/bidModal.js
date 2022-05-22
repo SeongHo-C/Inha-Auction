@@ -1,4 +1,4 @@
-function currentBidModal(productid, instantPrice) {
+function currentBidModal(productid, instantPrice, successBidderid) {
   fetch(
     'http://182.218.194.156:8080/order/sales/bid?page=1&per_page=12&productId=' +
       productid,
@@ -14,6 +14,7 @@ function currentBidModal(productid, instantPrice) {
     .then(function (data) {
       console.log(data);
 
+      sellerRoomCreate(productid, successBidderid);
       // 낙찰 완료된 상품 버튼 비활성화하기
       currentBidDisabled();
       function currentBidDisabled() {
@@ -109,4 +110,32 @@ function currentBidModal(productid, instantPrice) {
       }
     })
     .catch(console.log);
+}
+
+// 판매자 채팅방 생성
+function sellerRoomCreate(productid, successBidderid) {
+  const memberId = localStorage.getItem('memberId');
+  const roomCreate = document.querySelector('#successChat');
+  console.log(roomCreate);
+  roomCreate.addEventListener('click', (e) => {
+    e.preventDefault();
+    fetch('http://182.218.194.156:8080/chat/room', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+      body: JSON.stringify({
+        sellerId: memberId,
+        customerId: successBidderid,
+        productId: productid,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        location.href = '/chat/chat.html';
+      })
+      .catch(console.log);
+  });
 }

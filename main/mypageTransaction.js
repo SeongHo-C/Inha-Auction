@@ -103,6 +103,8 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
           product[i].productId +
           '" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#bidStateModal" onClick="currentBidModal(this.id, ' +
           product[i].instantPrice +
+          ', ' +
+          product[i].successBidderId +
           ')">' +
           product[i].bidCnt +
           '</button></td></tr>';
