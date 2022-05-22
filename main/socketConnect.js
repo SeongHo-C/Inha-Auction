@@ -11,6 +11,21 @@ function socketConnect() {
   );
 
   function onConnected() {
-    stompClient.subscribe('/topic/chat/' + memberid, function (e) {});
+    stompClient.subscribe('/topic/chat/' + memberid, function (chat) {
+      const content = JSON.parse(chat.body);
+
+      const message = content.message;
+
+      let str = '';
+      str = `
+      <div class="chat-message-left pb-4"><div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+      ${message}</div></div>
+      `;
+
+      $('.chat-messages').append(str);
+
+      chat = document.querySelector('.chat-messages');
+      chat.scrollTop = chat.scrollHeight;
+    });
   }
 }

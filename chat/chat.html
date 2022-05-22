@@ -11,7 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="js/roomSelect.js" defer></script>
     <script src="/main/login.js" defer></script>
-
+    <script src="js/messageBox.js"></script>
     <style>
       body {
         margin-top: 20px;
@@ -28,7 +28,7 @@
       .chat-messages {
         display: flex;
         flex-direction: column;
-        max-height: 800px;
+        max-height: 600px;
         overflow-y: scroll;
       }
 
@@ -127,127 +127,36 @@
                 >마이페이지</a
               >
             </li>
-            <li><a href="#" class="nav-link px-3 link-dark">채팅</a></li>
+            <li>
+              <a href="#" class="nav-link px-3 link-dark">채팅</a>
+            </li>
           </ul>
         </div>
       </div>
     </header>
     <main class="content">
-      <div class="container p-0">
+      <div class="container">
         <h1 class="h3 mb-3">Messages</h1>
 
-        <div class="card">
+        <div class="card" style="width: 100%">
           <div class="row g-0">
-            <!-- 채팅방 목록 내용 -->
             <div
               id="chatRoomList"
               class="col-12 col-lg-5 col-xl-3 border-right"
-            ></div>
+            >
+              <!-- 채팅방 목록 내용 -->
+            </div>
 
             <div class="col-12 col-lg-7 col-xl-9">
-              <div class="py-2 px-4 border-bottom d-none d-lg-block">
-                <div class="d-flex align-items-center py-1">
-                  <div class="flex-grow-1 pl-3">
-                    <strong>Sharon Lessman</strong>
-                  </div>
-                  <div>
-                    <button class="btn btn-primary mr-1 px-3">신고</button>
-                    <button
-                      class="btn btn-info mr-1 px-3 d-none d-md-inline-block"
-                    >
-                      거래중
-                    </button>
-                  </div>
-                </div>
+              <div id="messageBoxContent">
+                <!-- 메세지 박스 내용 -->
               </div>
-
-              <div class="position-relative">
-                <div class="chat-messages p-4">
-                  <div class="chat-message-right pb-4">
-                    <div>
-                      <img
-                        src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                        class="rounded-circle mr-1"
-                        alt="Chris Wood"
-                        width="40"
-                        height="40"
-                      />
-                      <div class="text-muted small text-nowrap mt-2">
-                        2:33 am
-                      </div>
-                    </div>
-                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                      <div class="font-weight-bold mb-1">You</div>
-                      Lorem ipsum dolor sit amet, vis erat denique in, dicunt
-                      prodesset te vix.
-                    </div>
-                  </div>
-
-                  <div class="chat-message-left pb-4">
-                    <div>
-                      <img
-                        src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                        class="rounded-circle mr-1"
-                        alt="Sharon Lessman"
-                        width="40"
-                        height="40"
-                      />
-                      <div class="text-muted small text-nowrap mt-2">
-                        2:34 am
-                      </div>
-                    </div>
-                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                      <div class="font-weight-bold mb-1">Sharon Lessman</div>
-                      Sit meis deleniti eu, pri vidit meliore docendi ut, an eum
-                      erat animal commodo.
-                    </div>
-                  </div>
-
-                  <div class="chat-message-right mb-4">
-                    <div>
-                      <img
-                        src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                        class="rounded-circle mr-1"
-                        alt="Chris Wood"
-                        width="40"
-                        height="40"
-                      />
-                      <div class="text-muted small text-nowrap mt-2">
-                        2:35 am
-                      </div>
-                    </div>
-                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-                      <div class="font-weight-bold mb-1">You</div>
-                      Cum ea graeci tractatos.
-                    </div>
-                  </div>
-
-                  <div class="chat-message-left pb-4">
-                    <div>
-                      <img
-                        src="https://bootdey.com/img/Content/avatar/avatar3.png"
-                        class="rounded-circle mr-1"
-                        alt="Sharon Lessman"
-                        width="40"
-                        height="40"
-                      />
-                      <div class="text-muted small text-nowrap mt-2">
-                        2:36 am
-                      </div>
-                    </div>
-                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                      <div class="font-weight-bold mb-1">Sharon Lessman</div>
-                      Sed pulvinar, massa vitae interdum pulvinar, risus lectus
-                      porttitor magna, vitae commodo lectus mauris et velit.
-                      Proin ultricies placerat imperdiet. Morbi varius quam ac
-                      venenatis tempus.
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               <div class="flex-grow-0 py-3 px-4 border-top">
-                <div class="input-group">
+                <div
+                  id="sendHidden"
+                  class="input-group"
+                  style="visibility: hidden"
+                >
                   <input
                     id="message"
                     type="text"
