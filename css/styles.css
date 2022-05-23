@@ -11914,7 +11914,7 @@ ul.block {
   outline: none;
 }
 
-.item_row:hover {
+.item:hover {
   background-color: lightblue;
 }
 

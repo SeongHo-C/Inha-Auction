@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>상품정보상세</title>
     <link rel="stylesheet" href="/css/styles.css" />
-    
+
     <script src="login.js" defer></script>
     <script src="notify.js" defer></script>
     <script src="addFile.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="notification.js"></script>
+    <script src="socketConnect.js" defer></script>
 
     <!--웹 로고-->
     <link rel="icon" type="image/x-icon" href="/images/emblem.ico" />
@@ -21,6 +23,17 @@
       <div class="container px-5 px-lg-5">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <div class="dropdown">
+              <button
+                class="dropdowBtn dropdown-toggle"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fa-solid fa-bell"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li class="item_row"></li>
+              </ul>
+            </div>
             <li class="nav-item">
               <a id="login" class="nav-link" href="/member/login.html"
                 >로그인</a
@@ -77,7 +90,8 @@
                 >마이페이지</a
               >
             </li>
-            <li>              <a href="/chat/chat.html" class="nav-link px-3 link-dark">채팅</a>
+            <li>
+              <a href="/chat/chat.html" class="nav-link px-3 link-dark">채팅</a>
             </li>
           </ul>
         </div>
@@ -85,17 +99,18 @@
     </header>
     <section class="py-3">
       <div class="container px-4 px-lg-5 mt-3">
-        <form 
-            id="notifyInfo"
-            name="notifyInfo"
-            method="post"
-            onsubmit="return false;"
-            enctype="multipart/form-data">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-          <div class="col mb-5">
-            <h2>신고</h2>
-            <hr />
-            
+        <form
+          id="notifyInfo"
+          name="notifyInfo"
+          method="post"
+          onsubmit="return false;"
+          enctype="multipart/form-data"
+        >
+          <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col mb-5">
+              <h2>신고</h2>
+              <hr />
+
               <ul id="notify">
                 <li class="mb-2">
                   <label for="product-num">상품번호</label>
@@ -144,17 +159,16 @@
                   <div class="file-list" style="width: 66.5%"></div>
                 </li>
               </ul>
-            
+            </div>
           </div>
-        </div>
-        <div class="text-center row-cols-7">
-          <button id="registration" type="submit" class="btn btn-primary">
-            등록
-          </button>
-          <button type="button" class="btn btn-secondary" onclick="back()">
-            취소
-          </button>
-        </div>
+          <div class="text-center row-cols-7">
+            <button id="registration" type="submit" class="btn btn-primary">
+              등록
+            </button>
+            <button type="button" class="btn btn-secondary" onclick="back()">
+              취소
+            </button>
+          </div>
         </form>
       </div>
     </section>
@@ -177,6 +191,12 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
-    ></scripta>
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/0a28c38607.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
   </body>
 </html>

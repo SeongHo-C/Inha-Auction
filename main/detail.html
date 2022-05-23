@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>상품정보상세</title>
     <link rel="stylesheet" href="/css/styles.css" />
-    <script src="detailProduct.js"></script>
+    <script src="detailProduct.js" defer></script>
     <script src="login.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     
@@ -22,6 +22,19 @@
       <div class="container px-5 px-lg-5">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <div class="dropdown">
+              <button
+                class="dropdowBtn dropdown-toggle"
+                data-bs-toggle="dropdown"
+              >
+                <i class="fa-solid fa-bell"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li class="item_row">
+                  
+                </li>
+              </ul>
+            </div>
             <li class="nav-item">
               <a id="login" class="nav-link" href="/member/login.html"
                 >로그인</a
@@ -68,6 +81,7 @@
           <ul
             class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0 me-lg-4 ms-6"
           >
+          
             <li>
               <a href="/main/register.html" class="nav-link px-3 link-dark"
                 >상품등록</a
@@ -228,5 +242,10 @@
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/0a28c38607.js"
+      crossorigin="anonymous"
+    ></script>
+    
   </body>
 </html>

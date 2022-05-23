@@ -148,7 +148,7 @@ function sellerRoomCreate(productid, successBidderid) {
 // 낙찰자에게 알림 전송
 function customerSend(receiverId, productname) {
   data = {
-    message: productname + '이(가) 낙찰되었습니다.',
+    message: productname + ' 상품이 낙찰되었습니다.',
     type: 'PURCHASE',
     receiverId: receiverId,
   };

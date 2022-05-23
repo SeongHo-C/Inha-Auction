@@ -30,6 +30,18 @@ function socketConnect() {
     });
 
     // 알림 구독
-    stompClient.subscribe('/topic/notify/' + memberid, function (chat) {});
+    stompClient.subscribe('/topic/notify/' + memberid, function (chat) {
+      const content = JSON.parse(chat.body);
+
+      const message = content.message;
+
+      let str = '';
+      str = `
+      <div class="item"><span class="NotificationMsg">${message}</span>
+        <button class="item_delete"><i class="fa-solid fa-trash-can"></i></button></div><div class="item_divider"></div>
+      `;
+
+      $('.item_row').append(str);
+    });
   }
 }

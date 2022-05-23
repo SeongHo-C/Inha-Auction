@@ -66,7 +66,7 @@ function onBid(product) {
             .then(function (data) {
               console.log(data);
               sellerSend(product);
-              //location.href = '/main/detail.html?id=' + productId;
+              location.href = '/main/detail.html?id=' + productId;
             })
             .catch(function (error) {
               console.log(error);
@@ -88,7 +88,7 @@ function sellerSend(productInfo) {
   console.log(productInfo);
 
   data = {
-    message: productInfo.data.name + '이(가) 입찰되었습니다.',
+    message: productInfo.data.name + ' 상품이 입찰되었습니다.',
     type: 'SALES',
     receiverId: productInfo.data.sellerId,
   };
