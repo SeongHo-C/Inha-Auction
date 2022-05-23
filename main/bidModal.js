@@ -1,4 +1,9 @@
-function currentBidModal(productid, instantPrice, successBidderid) {
+function currentBidModal(
+  productid,
+  instantPrice,
+  successBidderid,
+  productname
+) {
   fetch(
     'http://182.218.194.156:8080/order/sales/bid?page=1&per_page=12&productId=' +
       productid,
@@ -13,7 +18,6 @@ function currentBidModal(productid, instantPrice, successBidderid) {
     })
     .then(function (data) {
       console.log(data);
-
       sellerRoomCreate(productid, successBidderid);
       // 낙찰 완료된 상품 버튼 비활성화하기
       currentBidDisabled();
@@ -100,6 +104,7 @@ function currentBidModal(productid, instantPrice, successBidderid) {
                   })
                   .then(function (data) {
                     console.log(data);
+                    customerSend(product[checkIdx].customerId, productname);
                     location.href = '/main/mypage.html';
                   })
                   .catch(console.log);
@@ -138,4 +143,14 @@ function sellerRoomCreate(productid, successBidderid) {
       })
       .catch(console.log);
   });
+}
+
+// 낙찰자에게 알림 전송
+function customerSend(receiverId, productname) {
+  data = {
+    message: productname + '이(가) 낙찰되었습니다.',
+    type: 'PURCHASE',
+    receiverId: receiverId,
+  };
+  stompClient.send('/app/notification/send', {}, JSON.stringify(data));
 }

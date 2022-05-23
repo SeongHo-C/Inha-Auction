@@ -9,9 +9,10 @@
     <script src="detailProduct.js"></script>
     <script src="login.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="roomCreate.js" defer></script>
+    
     <script src="socketConnect.js" defer></script>
-
+    <script src="detailBid.js" defer></script>
+    <script src="notification.js"></script>
     <!--웹 로고-->
     <link rel="icon" type="image/x-icon" href="/images/emblem.ico" />
   </head>
@@ -225,71 +226,6 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script>
-      // 즉시 구매가
-      function toggleTextbox(checkbox) {
-      const instantPrice_value = document.getElementById("instantPrice_value").firstChild.data.replace(',','').slice(0, -1);
-        const textbox_elem = document.getElementById('bid-price');
-        textbox_elem.disabled = checkbox.checked ? true : false;
-        if (textbox_elem.disabled) {
-          textbox_elem.value = instantPrice_value;
-        } else {
-          textbox_elem.value = null;
-          textbox_elem.focus();
-        }
-      }
-
-      // 입찰하기
-      const modalForm = document.getElementById('btnBid');
-
-      modalForm.addEventListener('click', function(e) {
-        e.preventDefault();
-        const instantPrice_value = Number(document.getElementById("instantPrice_value").firstChild.data.replace(',','').slice(0, -1));
-        const startPrice_value = Number(document.getElementById('startPrice_value').firstChild.data.replace(',','').slice(0, -1));
-        const bidUnit_value = Number(document.getElementById('bidUnit_value').firstChild.data.replace(',','').slice(0, -1));
-        const bid = Number(document.getElementById('bid-price').value);
-        
-        console.log(startPrice_value <= bid);
-        console.log(bid % bidUnit_value == 0);
-        console.log(instantPrice_value < bid);
-        
-        if(startPrice_value <= bid) {
-          if(bid % bidUnit_value == 0) {
-            if(instantPrice_value >= bid) {
-        const memberId = localStorage.getItem('memberId');
-        fetch('http://182.218.194.156:8080/order', {
-          method: 'post',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + localStorage.getItem('token'),
-          },
-          body: JSON.stringify({
-            bid: bid,
-            productId: productId,
-            customerId: memberId,
-          }),
-        }) .then(function (response) {
-            return response.text();
-          })
-          .then(function (data) {
-            console.log(data);
-            location.href= '/main/detail.html?id=' + productId;
-          })
-          .catch(function (error) {
-            console.log(error);
-          });} else {
-            alert('즉시 구매가를 넘었습니다.');
-          }
-        } else{
-            alert('입찰 단위에 맞지 않습니다.');
-          }
-        } else {
-          alert('입찰 가격이 시작가보다 낮습니다.');
-        }
-          
-        
-      })
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
   </body>

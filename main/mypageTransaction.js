@@ -105,6 +105,10 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
           product[i].instantPrice +
           ', ' +
           product[i].successBidderId +
+          ', ' +
+          '`' +
+          product[i].productName +
+          '`' +
           ')">' +
           product[i].bidCnt +
           '</button></td></tr>';

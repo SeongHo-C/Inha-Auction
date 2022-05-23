@@ -8,7 +8,7 @@ fetch('http://182.218.194.156:8080/product/' + productId)
   })
   .then(function (data) {
     console.log(data);
-
+    onBid(data);
     roomsCreate(data);
 
     // 버튼 비활성화
@@ -17,7 +17,6 @@ fetch('http://182.218.194.156:8080/product/' + productId)
     function btnDisabled() {
       const product = data.data;
       const target = document.getElementById('Bid');
-      console.log(target);
       if (product.successBid !== null || product.sellerId == id) {
         target.disabled = true;
       }
@@ -168,7 +167,6 @@ function roomsCreate(data) {
   const customerId = localStorage.getItem('memberId');
 
   const roomCreate = document.querySelector('#roomCreate');
-  console.log(roomCreate);
   roomCreate.addEventListener('click', (e) => {
     e.preventDefault();
 

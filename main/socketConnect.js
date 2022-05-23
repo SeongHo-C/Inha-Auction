@@ -11,6 +11,7 @@ function socketConnect() {
   );
 
   function onConnected() {
+    // 채팅 구독
     stompClient.subscribe('/topic/chat/' + memberid, function (chat) {
       const content = JSON.parse(chat.body);
 
@@ -27,5 +28,8 @@ function socketConnect() {
       chat = document.querySelector('.chat-messages');
       chat.scrollTop = chat.scrollHeight;
     });
+
+    // 알림 구독
+    stompClient.subscribe('/topic/notify/' + memberid, function (chat) {});
   }
 }
