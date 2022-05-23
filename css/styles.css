@@ -3829,17 +3829,17 @@ fieldset:disabled .btn {
   position: absolute;
   z-index: 1000;
   display: none;
-  min-width: 10rem;
+  min-width: 25rem;
   padding: 0.5rem 0;
   margin: 0;
-  font-size: 1rem;
+  font-size: 16px;
   color: #212529;
   text-align: left;
   list-style: none;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 .dropdown-menu[data-bs-popper] {
   top: 100%;
@@ -7792,7 +7792,7 @@ fieldset:disabled .btn {
 }
 
 .ms-5 {
-  margin-left: 9.7rem !important;
+  margin-left: 10.2rem !important;
 }
 
 .ms-6 {
@@ -11892,4 +11892,35 @@ ul.block {
 
 .detail-productInfo {
   height: 55.5vh;
+}
+
+.dropdowBtn {
+  padding-top: 8px;
+  color: white;
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 32px;
+}
+
+.item_delete {
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.item_row:hover {
+  background-color: lightblue;
+}
+
+.item_divider {
+  width: 90%;
+  height: 2px;
+  background-color: lightgray;
+  margin: auto;
 }
