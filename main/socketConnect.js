@@ -37,7 +37,7 @@ function socketConnect() {
       const id = content.id;
       let str = '';
       str = `
-      <li id="${id}" class="item_row"><div class="item"><span class="NotificationMsg">${message}</span>
+      <li id="${id}" class="item_row"><div class="item" onClick="notificationRead(${id})"><span class="NotificationMsg">${message}</span>
         <button class="item_delete" onClick="removeItem(${id})"><i class="fa-solid fa-trash-can"></i></button></div><div class="item_divider"></div></li>
       `;
 
