@@ -35,9 +35,10 @@ function socketConnect() {
 
       const message = content.message;
       const id = content.id;
+      const length = $('.dropdown-menu>li').length;
       let str = '';
       str = `
-      <li id="${id}" class="item_row"><div class="item" onClick="notificationRead(${id})"><span class="NotificationMsg">${message}</span>
+      <li id="${id}" class="item_row"><div id="item${length}" class="item" onClick="notificationRead(${id}, this.id)"><span class="NotificationMsg">${message}</span>
         <button class="item_delete" onClick="removeItem(${id})"><i class="fa-solid fa-trash-can"></i></button></div><div class="item_divider"></div></li>
       `;
 
