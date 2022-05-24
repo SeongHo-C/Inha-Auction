@@ -33,7 +33,7 @@ function messageBox(roomId) {
 
         htmlData += `
         <div class="position-relative">
-                <div class="chat-messages p-4">
+                <div id="room${roomId}" class="chat-messages p-4">
         `;
         for (let i = 0; i < messages.length; i++) {
           if (memberId == messages[i].sender.id) {

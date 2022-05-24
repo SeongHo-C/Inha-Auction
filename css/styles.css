@@ -11928,3 +11928,10 @@ ul.block {
 .item_delete:hover {
   color: red;
 }
+
+.salesScroll {
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+  overflow-y: scroll;
+}

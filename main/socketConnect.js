@@ -6,7 +6,9 @@ function socketConnect() {
   const socket = new SockJS('http://182.218.194.156:8080/ws'); // 소켓 생성
   stompClient = Stomp.over(socket);
   stompClient.connect(
-    { Authorization: localStorage.getItem('token') },
+    {
+      Authorization: localStorage.getItem('token'),
+    },
     onConnected
   );
 
@@ -16,14 +18,14 @@ function socketConnect() {
       const content = JSON.parse(chat.body);
 
       const message = content.message;
-
+      const roomid = content.roomId;
       let str = '';
       str = `
       <div class="chat-message-left pb-4"><div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
       ${message}</div></div>
       `;
 
-      $('.chat-messages').append(str);
+      $('#room' + roomid).append(str);
 
       chat = document.querySelector('.chat-messages');
       chat.scrollTop = chat.scrollHeight;
