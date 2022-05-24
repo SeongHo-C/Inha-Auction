@@ -34,14 +34,17 @@ function socketConnect() {
       const content = JSON.parse(chat.body);
 
       const message = content.message;
-
+      const id = content.id;
       let str = '';
       str = `
-      <div class="item"><span class="NotificationMsg">${message}</span>
-        <button class="item_delete"><i class="fa-solid fa-trash-can"></i></button></div><div class="item_divider"></div>
+      <li id="${id}" class="item_row"><div class="item"><span class="NotificationMsg">${message}</span>
+        <button class="item_delete" onClick="removeItem(${id})"><i class="fa-solid fa-trash-can"></i></button></div><div class="item_divider"></div></li>
       `;
 
-      $('.item_row').append(str);
+      $('.dropdown-menu').append(str);
+
+      const dropdowBtn = document.querySelector('.dropdowBtn');
+      dropdowBtn.style.color = 'red';
     });
   }
 }

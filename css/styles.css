@@ -11924,3 +11924,7 @@ ul.block {
   background-color: lightgray;
   margin: auto;
 }
+
+.item_delete:hover {
+  color: red;
+}
