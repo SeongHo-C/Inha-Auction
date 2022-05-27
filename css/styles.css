@@ -11935,3 +11935,25 @@ ul.block {
   max-height: 400px;
   overflow-y: scroll;
 }
+
+.detail-tb-w100 {
+  width: 100%;
+  border-spacing: 20px;
+  border-collapse: collapse;
+}
+
+.border-line {
+  border-bottom: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+}
+
+#detailInfo > thead > tr > td:nth-child(1),
+#detailInfo > tbody > tr > td:nth-child(1) {
+  background-color: #f8f8f8;
+  padding-left: 0.5rem;
+}
+
+#detailInfo > thead > tr > td:nth-child(2),
+#detailInfo > tbody > tr > td:nth-child(2) {
+  padding-left: 1rem;
+}

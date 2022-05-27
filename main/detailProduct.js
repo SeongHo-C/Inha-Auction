@@ -55,9 +55,9 @@ fetch('http://182.218.194.156:8080/product/' + productId)
       const endTime = product.endDate.split('T');
       const successBid = product.successBid;
       htmlData +=
-        '<colgroup><col style="width: 20%" /><col style="width: 20%" /><col style="width: 60%" /></colgroup>';
+        '<colgroup><col style="width: 30%" /><col style="width: 20%" /><col style="width: 50%" /></colgroup>';
       htmlData +=
-        '<thead><tr><th>시작가</th><td id="startPrice_value">' +
+        '<thead><tr><td>시작가</td><td id="startPrice_value">' +
         product.startPrice.toLocaleString() +
         '원</td>';
       htmlData += '<td id="time" style="color: blue;">';
@@ -68,7 +68,7 @@ fetch('http://182.218.194.156:8080/product/' + productId)
         htmlData += '남은시간: ' + '종료';
       }
       htmlData +=
-        '</td></tr></thead><tbody"><tr><th>상품번호</th><td>' +
+        '</td></tr></thead><tbody"><tr><td>상품번호</td><td>' +
         product.id +
         '</td>';
       htmlData +=
@@ -76,26 +76,24 @@ fetch('http://182.218.194.156:8080/product/' + productId)
         product.id +
         '&sellerId=' +
         product.sellerId +
-        '"><button type="button">신고</button></a></td></tr>';
+        '"><button type="button" style="color: white; background-color: gray; border: none">신고</button></a></td></tr>';
       htmlData +=
-        '<tr><th>마감기한</th><td colspan="2">' +
+        '<tr><td>마감기한</td><td colspan="2">' +
         endTime[0] +
         ' ' +
         endTime[1] +
         '</td></tr>';
       htmlData +=
-        '<tr><th>입찰단위</th><td id="bidUnit_value">' +
+        '<tr><td>입찰단위</td><td id="bidUnit_value">' +
         product.bidUnit.toLocaleString() +
         '원</td></tr>';
       htmlData +=
-        '<tr><th>즉시구매가</th><td id="instantPrice_value">' +
+        '<tr><td>즉시구매가</td><td id="instantPrice_value">' +
         product.instantPrice.toLocaleString() +
         '원</td></tr>';
-      htmlData += '<tr><th>입찰 수</th><td>' + product.bidderCnt + '</td></tr>';
+      htmlData += '<tr><td>입찰 수</td><td>' + product.bidderCnt + '</td></tr>';
       htmlData +=
-        '<tr><th>판매자 ID</th><td>' +
-        product.sellerId +
-        '</td><td><input type="button" value="판매자 거래내역"/></td></tr></tbody>';
+        '<tr><td>판매자 ID</td><td>' + product.sellerId + '</td></tr></tbody>';
       $('#detailInfo').html(htmlData);
     }
 
