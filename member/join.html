@@ -205,13 +205,18 @@
       </form>
     </main>
     <script>
-      var myForm = document.getElementById('joinForm');
+      const myForm = document.getElementById('joinForm');
 
       myForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        var fileInput = document.getElementById('fileInput');
-        var formData = new FormData();
+        const pwd = document.querySelector('#floatingPassword').value;
+        const pwdConfirm = document.querySelector(
+          '#floatingPasswordConfirm'
+        ).value;
+
+        const fileInput = document.getElementById('fileInput');
+        const formData = new FormData();
         formData.append('name', document.getElementById('floatingName').value);
         formData.append('id', document.getElementById('floatingId').value);
         formData.append(
@@ -222,7 +227,6 @@
           'department',
           document.getElementById('departSelect').value
         );
-        console.log(document.getElementById('departSelect').value);
         formData.append(
           'phone',
           document.getElementById('floatingPhone').value
@@ -236,22 +240,30 @@
           document.getElementById('floatingEmail').value
         );
         formData.append('image', fileInput.files[0]);
-        console.log(formData);
-        fetch('http://182.218.194.156:8080/auth/register', {
-          method: 'post',
-          headers: {},
-          body: formData,
-        })
-          .then(function (response) {
-            return response.text();
+
+        if (pwd == pwdConfirm) {
+          fetch('http://182.218.194.156:8080/auth/register', {
+            method: 'post',
+            headers: {},
+            body: formData,
           })
-          .then(function (data) {
-            console.log(data);
-            location.href = '/main/search.html';
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+            .then(function (response) {
+              if (response.status == 400) {
+                alert('회원가입 입력란에 알맞게 기입해주세요.');
+              }
+              return response.text();
+            })
+            .then(function (data) {
+              console.log(data);
+
+              location.href = '/main/search.html';
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        } else {
+          alert('비밀번호가 일치하지 않습니다.');
+        }
       });
     </script>
   </body>

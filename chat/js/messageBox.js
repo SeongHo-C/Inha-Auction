@@ -27,7 +27,7 @@ function messageBox(roomId) {
         }
 
         htmlData += `</strong></div><div><button class="btn btn-primary mr-1 px-3">신고</button>
-        <button class="btn btn-info mr-1 px-3 d-none d-md-inline-block">거래중</button>
+        
         </div></div></div>
         `;
 

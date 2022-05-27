@@ -53,14 +53,24 @@ fetch('http://182.218.194.156:8080/product/' + productId)
       let htmlData = '';
       const product = data.data;
       const endTime = product.endDate.split('T');
+      const successBid = product.successBid;
       htmlData +=
         '<colgroup><col style="width: 20%" /><col style="width: 20%" /><col style="width: 60%" /></colgroup>';
       htmlData +=
         '<thead><tr><th>시작가</th><td id="startPrice_value">' +
         product.startPrice.toLocaleString() +
         '원</td>';
-      htmlData += '<td id="time" style="color: blue"></td></tr></thead>';
-      htmlData += '<tbody"><tr><th>상품번호</th><td>' + product.id + '</td>';
+      htmlData += '<td id="time" style="color: blue;">';
+
+      if (successBid == null) {
+        htmlData += '남은시간: ' + remaindTime(product.endDate);
+      } else {
+        htmlData += '남은시간: ' + '종료';
+      }
+      htmlData +=
+        '</td></tr></thead><tbody"><tr><th>상품번호</th><td>' +
+        product.id +
+        '</td>';
       htmlData +=
         '<td><a href="/main/notify.html?id=' +
         product.id +
