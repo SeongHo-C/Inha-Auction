@@ -77,34 +77,35 @@ function htmlAdd(data) {
     const successBid = product[i].successBid;
     let htmlData = '';
     htmlData +=
-      '<div class="col mb-5"><a href="/main/detail.html?id=' +
+      '<div class="col mb-7"><a href="/main/detail.html?id=' +
       product[i].id +
-      '"><div class="card h-100">';
+      '"><div class="card h-100 px-2 py-2">';
     htmlData +=
       '<img class="card-img-top card-size" src="http://182.218.194.156:8080/image/product-' +
       product[i].id +
       '-0.png?type=product" alt="..."/>';
-    htmlData += '<div class="card-body text-center"><div class="">';
-    htmlData += '<h5 class="fw-border">' + product[i].name + '</h5>';
+    htmlData += '<div class="card-body"><div class="">';
     htmlData +=
-      '<h5>' +
+      '<h6 class="fw-border"><strong>' + product[i].name + '</strong></h6>';
+    htmlData +=
+      '<h6 style="color: #AE0000"><strong>' +
       product[i].startPrice.toLocaleString() +
-      '원</h5><h5>입찰 ' +
+      '</strong>원</h6><h6>입찰 ' +
       product[i].bidderCnt +
-      '명</h5></div></div>';
+      '명</h6></div></div>';
     htmlData +=
       '<div class ="card-footer bg-transparent ms-1"><div class="me-auto">';
     htmlData +=
       '<h6 class="mt-2"> 판매자아이디: ' +
       product[i].sellerLoginId +
-      '</h6><h6 id="endTime' +
+      '</h6><h6 style="color: blue;" id="endTime' +
       i +
-      '">';
+      '"><button class="alarmBtn"><i class="fa-solid fa-stopwatch"></i></button>';
 
     if (successBid == null) {
-      htmlData += '남은시간: ' + remaindTime(product[i].endDate);
+      htmlData += ' ' + remaindTime(product[i].endDate);
     } else {
-      htmlData += '남은시간: ' + '종료';
+      htmlData += ' ' + '종료';
     }
     htmlData += '</h6></div></div></div></a></div>';
 
@@ -119,10 +120,12 @@ function htmlAdd(data) {
       const successBid = product[i].successBid;
       if (successBid == null) {
         document.getElementById('endTime' + i).innerHTML =
-          '남은시간: ' + remaindTime(product[i].endDate);
+          '<button class="alarmBtn"><i class="fa-solid fa-stopwatch"></i></button> ' +
+          remaindTime(product[i].endDate);
       } else {
         document.getElementById('endTime' + i).innerHTML =
-          '남은시간: ' + '종료';
+          '<button class="alarmBtn"><i class="fa-solid fa-stopwatch"></i></button> ' +
+          '종료';
       }
     }
   }

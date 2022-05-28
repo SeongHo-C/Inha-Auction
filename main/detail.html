@@ -19,7 +19,7 @@
   <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container px-5 px-lg-5">
+      <div class="container px-6">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <div class="dropdown">
@@ -68,16 +68,9 @@
             />
             <span class="fs-4">Inha Auction</span>
           </a>
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-5 w-40 ms-5">
-            <input
-              type="search"
-              class="form-control"
-              placeholder="Search..."
-              aria-label="Search"
-            />
-          </form>
+          
           <ul
-            class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0 me-lg-4 ms-6"
+            class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0 me-lg-4 ms-auto"
           >
           
             <li>
@@ -98,7 +91,8 @@
     </header>
     <section class="py-3">
       <div class="container px-4 px-lg-5 mt-3">
-        <h2>상품명</h2>
+        <div><h3><strong id="topProductName"></strong></h3></div>
+        
         <hr />
         <div class="row gx-4 gx-lg-5 row-cols-xl-2 justify-content-center">
           <!--상품이미지-->
@@ -153,12 +147,13 @@
                   id="Bid"
                   type="button"
                   class="btn btn-primary"
+                  style="margin-left: 65.3%"
                   data-bs-toggle="modal"
                   data-bs-target="#bidModal"
                 >
                   입찰하기
                 </button>
-                <button id="roomCreate" type="button" class="btn btn-secondary">
+                <button id="roomCreate" type="button" class="btn btn-secondary ms-2">
                   문의하기
                 </button>
                 

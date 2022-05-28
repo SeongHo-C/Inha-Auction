@@ -22,6 +22,9 @@ fetch('http://182.218.194.156:8080/product/' + productId)
       }
     }
 
+    // 상품명 추가하기
+    productNameAdd(data);
+
     // 사진 추가하기
     imageAdd();
 
@@ -60,7 +63,8 @@ fetch('http://182.218.194.156:8080/product/' + productId)
         '<thead><tr><td>시작가</td><td id="startPrice_value">' +
         product.startPrice.toLocaleString() +
         '원</td>';
-      htmlData += '<td id="time" style="color: blue;">';
+      htmlData +=
+        '<td id="time" style="color: blue;"><button class="alarmBtn"><i class="fa-solid fa-stopwatch"></i></button>';
 
       if (successBid == null) {
         htmlData += '남은시간: ' + remaindTime(product.endDate);
@@ -147,9 +151,12 @@ fetch('http://182.218.194.156:8080/product/' + productId)
       const successBid = product.successBid;
       if (successBid == null) {
         document.getElementById('time').innerHTML =
-          '남은시간: ' + remaindTime(product.endDate);
+          '<button class="alarmBtn"><i class="fa-solid fa-stopwatch"></i></button>남은시간: ' +
+          remaindTime(product.endDate);
       } else {
-        document.getElementById('time').innerHTML = '남은시간: ' + '종료';
+        document.getElementById('time').innerHTML =
+          '<button class="alarmBtn"><i class="fa-solid fa-stopwatch"></i></button>남은시간: ' +
+          '종료';
       }
     }
     setInterval(timeAdd, 1000);
@@ -160,7 +167,7 @@ fetch('http://182.218.194.156:8080/product/' + productId)
       let htmlData = '';
       const product = data.data;
       htmlData +=
-        '<h2>상품설명</h2><hr><textarea style="width: 100%; height: auto; min-height: 200px; padding: 10px;" readonly>' +
+        '<h3><strong>상품설명</strong></h3><hr><textarea style="width: 100%; height: auto; min-height: 200px; padding: 10px;" readonly>' +
         product.content +
         '</textarea>';
 
@@ -197,4 +204,12 @@ function roomsCreate(data) {
       })
       .catch(console.log);
   });
+}
+
+function productNameAdd(data) {
+  let htmlData = '';
+  const product = data.data;
+
+  htmlData += product.name;
+  $('#topProductName').html(htmlData);
 }
