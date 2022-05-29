@@ -27,7 +27,7 @@
   <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container px-5 px-lg-5">
+      <div class="container px-6">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <div class="dropdown">
@@ -72,20 +72,17 @@
               width="40"
               height="40"
             />
-            <span class="fs-4">Inha Auction</span>
+            <span id="inhaAuction" class="fs-4">Inha Auction</span>
           </a>
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-5 w-40 ms-5">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search..."
-              aria-label="Search"
-            />
-          </form>
+
           <ul
-            class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0 me-lg-4 ms-6"
+            class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0 me-lg-4 ms-auto"
           >
-            <li><a href="" class="nav-link px-3 link-dark">상품등록</a></li>
+            <li>
+              <a href="/main/register.html" class="nav-link px-3 link-dark"
+                >상품등록</a
+              >
+            </li>
             <li>
               <a href="/main/mypage.html" class="nav-link px-3 link-dark"
                 >마이페이지</a
@@ -278,9 +275,9 @@
 
       myForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        var categoryId = $('#children2 .list-group-item-info').attr('id');
+        const categoryId = children3;
 
-        var formData = new FormData();
+        const formData = new FormData();
         formData.append('name', document.getElementById('title').value);
         formData.append(
           'startPrice',

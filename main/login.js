@@ -21,3 +21,9 @@ logout.addEventListener('click', () => {
   join.innerHTML = '회원가입';
   alert('로그아웃 되었습니다.');
 });
+
+const inhaAuction = document.querySelector('#inhaAuction');
+inhaAuction.addEventListener('click', () => {
+  localStorage.setItem('search', '');
+  localStorage.setItem('category', '');
+});

@@ -97,7 +97,9 @@ fetch('http://182.218.194.156:8080/product/' + productId)
         '원</td></tr>';
       htmlData += '<tr><td>입찰 수</td><td>' + product.bidderCnt + '</td></tr>';
       htmlData +=
-        '<tr><td>판매자 ID</td><td>' + product.sellerId + '</td></tr></tbody>';
+        '<tr><td>판매자 ID</td><td>' +
+        product.sellerLoginId +
+        '</td></tr></tbody>';
       $('#detailInfo').html(htmlData);
     }
 

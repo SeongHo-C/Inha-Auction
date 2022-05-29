@@ -1,29 +1,54 @@
 const search = document.querySelector('#search');
-
 search.addEventListener('keypress', (e) => {
   if (e.key == 'Enter') {
-    let searchVal = search.value;
-    location.href = '/main/search.html?' + searchVal;
+    const searchVal = search.value;
+    localStorage.setItem('search', searchVal);
+    location.reload();
   }
 });
 
-const uri = location.href;
-const decodeuri = decodeURI(uri);
-const uriSplit = decodeuri.split('?');
-const keyword = uriSplit[1] || '';
+// 카테고리
+let categoryid = '';
+let categoryname = '';
+const categoryPath = document.querySelector('#categoryPath');
 
-search.value = keyword;
-fetch(
-  'http://182.218.194.156:8080/product?page=1&per_page=12&keyword=' + keyword
-)
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    console.log(data);
-    htmlAdd(data);
-  })
-  .catch(console.log);
+function categoryId(clickedId, clickedName) {
+  categoryid = clickedId;
+  categoryname = clickedName;
+  localStorage.setItem('category', clickedName);
+  location.reload();
+}
+const searchValue = localStorage.getItem('search') || '';
+search.value = searchValue;
+const categoryValue = localStorage.getItem('category') || '';
+console.log(categoryValue);
+if (categoryValue !== '') {
+  fetch(
+    `http://182.218.194.156:8080/product?page=1&per_page=50&keyword=${searchValue}&categoryName=${categoryValue}`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      htmlAdd(data);
+    })
+    .catch(console.log);
+
+  categoryPath.value = categoryValue;
+} else {
+  fetch(
+    `http://182.218.194.156:8080/product?page=1&per_page=50&keyword=${searchValue}`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      htmlAdd(data);
+    })
+    .catch(console.log);
+}
 
 function remaindTime(endDate) {
   // 서버 시간
@@ -73,8 +98,10 @@ function remaindTime(endDate) {
 function htmlAdd(data) {
   let testHtml = '';
   const product = data.data;
+
   for (let i = 0; i < data.count; i++) {
-    const successBid = product[i].successBid;
+    const successBid = product[i].successBid || '';
+
     let htmlData = '';
     htmlData +=
       '<div class="col mb-7"><a href="/main/detail.html?id=' +
@@ -99,10 +126,10 @@ function htmlAdd(data) {
       '<h6 class="mt-2"> 판매자아이디: ' +
       product[i].sellerLoginId +
       '</h6><h6 style="color: blue;" id="endTime' +
-      i +
+      product[i].id +
       '"><button class="alarmBtn"><i class="fa-solid fa-stopwatch"></i></button>';
 
-    if (successBid == null) {
+    if (successBid == '') {
       htmlData += ' ' + remaindTime(product[i].endDate);
     } else {
       htmlData += ' ' + '종료';
@@ -117,13 +144,13 @@ function htmlAdd(data) {
   function timeChange() {
     const product = data.data;
     for (let i = 0; i < data.count; i++) {
-      const successBid = product[i].successBid;
-      if (successBid == null) {
-        document.getElementById('endTime' + i).innerHTML =
+      const successBid = product[i].successBid || '';
+      if (successBid == '') {
+        document.getElementById('endTime' + product[i].id).innerHTML =
           '<button class="alarmBtn"><i class="fa-solid fa-stopwatch"></i></button> ' +
           remaindTime(product[i].endDate);
       } else {
-        document.getElementById('endTime' + i).innerHTML =
+        document.getElementById('endTime' + product[i].id).innerHTML =
           '<button class="alarmBtn"><i class="fa-solid fa-stopwatch"></i></button> ' +
           '종료';
       }
