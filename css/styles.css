@@ -11982,3 +11982,16 @@ ul.block {
   outline: none;
   border: none;
 }
+
+#product-register-table tr > td:nth-child(1) {
+  background-color: var(--bs-gray-200);
+}
+
+#product-register-table {
+  border-radius: 0.5rem;
+}
+
+#sales th {
+  position: sticky;
+  top: 0px;
+}

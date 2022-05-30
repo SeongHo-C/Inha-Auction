@@ -23,7 +23,7 @@
   <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container px-5 px-lg-5">
+      <div class="container px-6">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <div class="dropdown">
@@ -70,16 +70,9 @@
             />
             <span id="inhaAuction" class="fs-4">Inha Auction</span>
           </a>
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-5 w-40 ms-5">
-            <input
-              type="search"
-              class="form-control"
-              placeholder="Search..."
-              aria-label="Search"
-            />
-          </form>
+
           <ul
-            class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0 me-lg-4 ms-6"
+            class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0 me-lg-4 ms-auto"
           >
             <li>
               <a href="/main/register.html" class="nav-link px-3 link-dark"
@@ -100,11 +93,17 @@
     </header>
     <section class="py-3">
       <div class="container px-4 px-lg-5 mt-3">
-        <h2>마이페이지</h2>
+        <h2>
+          <i
+            style="margin-right: 15px; color: #212529"
+            class="fa-solid fa-user"
+          ></i
+          >마이페이지
+        </h2>
         <hr />
         <div class="row gx-4 gx-lg-5 row-cols-xl-2 justify-content-center">
           <div class="col mb-5">
-            <table id="userInfo" class="tb-w80">
+            <table id="userInfo" class="tb-w80" style="border-radius: 0.5rem">
               <tr>
                 <th>이름</th>
                 <td></td>
@@ -385,22 +384,34 @@
         </ul>
 
         <!-- 내용 -->
-        <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-content"
+          id="myTabContent"
+          style="overflow-y: auto; height: 500px"
+        >
           <div
             class="tab-pane fade show active"
             id="saleList"
             role="tabpanel"
             aria-labelledby="saleList-tab"
           >
-            <table id="sales" class="tb-w100 text-center"></table>
+            <table
+              id="sales"
+              class="tb-w100 text-center"
+              style="border: 1px solid var(--bs-gray-200)"
+            ></table>
           </div>
           <div
-            class="tab-pane fade"
+            class="tab-pane fade overflowY-scroll"
             id="buyList"
             role="tabpanel"
             aria-labelledby="buyList-tab"
           >
-            <table id="buy" class="tb-w100 text-center"></table>
+            <table
+              id="buy"
+              class="tb-w100 text-center"
+              style="border: 1px solid var(--bs-gray-200)"
+            ></table>
           </div>
         </div>
 

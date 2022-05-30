@@ -112,7 +112,11 @@
             <div class="col-md-4 text-center">
               <b>대분류</b>
               <ul id="parent" class="list-group pb-5">
-                <li class="list-group-item-action list-group-item">전체</li>
+                <li
+                  class="list-group-item-action list-group-item list-group-item-info"
+                >
+                  전체
+                </li>
               </ul>
             </div>
             <div class="col-md-4 text-center">
@@ -129,7 +133,13 @@
           </div>
           <!--상품 정보-->
           <div class="row mx-5 mb-5">
-            <h4>상품 정보</h4>
+            <h4>
+              <i
+                style="color: #212529; margin-right: 15px"
+                class="fa-solid fa-pencil"
+              ></i
+              >상품 정보
+            </h4>
 
             <table
               id="product-register-table"
@@ -140,8 +150,15 @@
                 <col style="width: 85%" />
               </colgroup>
               <tr>
-                <td class="text-center">제목</td>
-                <td><input type="text" id="title" size="50" /></td>
+                <td class="text-center">상품 제목</td>
+                <td>
+                  <input
+                    type="text"
+                    id="title"
+                    size="100%"
+                    placeholder="상품 제목을 입력해 주세요."
+                  />
+                </td>
               </tr>
               <tr>
                 <td class="text-center">상품 설명</td>
@@ -169,19 +186,25 @@
             </table>
           </div>
           <div class="row mx-5 mb-5">
-            <h4>경매 설정</h4>
+            <h4>
+              <i
+                style="color: #212529; margin-right: 15px"
+                class="fa-solid fa-pencil"
+              ></i
+              >경매 설정
+            </h4>
 
             <table
               id="product-register-table"
               style="width: 100%; border: 1px solid black"
             >
               <colgroup>
-                <col style="width: 13%" />
+                <col style="width: 13.5%" />
                 <col style="width: 22%" />
                 <col style="width: 13%" />
                 <col style="width: 22%" />
-                <col style="width: 15%" />
-                <col style="width: 15%" />
+                <col style="width: 10%" />
+                <col style="width: 10%" />
               </colgroup>
               <tr>
                 <td class="text-center">시작가</td>
@@ -214,18 +237,7 @@
               </tr>
               <tr>
                 <td class="text-center">경매 마감</td>
-                <!--
-                <td>
-                  <select id="period" style="width: 60px">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-                  일 진행
-                  </td>
-                -->
+
                 <td colspan="5">
                   <input id="endDate" type="datetime-local" />
                 </td>
@@ -261,6 +273,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!--  -->
     <script>
+      localStorage.setItem('categoryId', '');
+
       function toggleTextbox(checkbox) {
         const textbox_elem = document.getElementById('instantPrice');
         textbox_elem.disabled = checkbox.checked ? true : false;
@@ -270,12 +284,21 @@
           textbox_elem.focus();
         }
       }
+
+      let categoryid = '';
+      let categoryname = '';
+      function categoryId(clickedId, clickedName) {
+        categoryid = clickedId;
+        categoryname = clickedName;
+        localStorage.setItem('categoryId', categoryid);
+      }
+      console.log(categoryid);
       // 상품등록 api
       var myForm = document.getElementById('productInfo');
 
       myForm.addEventListener('submit', function (e) {
         e.preventDefault();
-        const categoryId = children3;
+        const categoryId = localStorage.getItem('categoryId');
 
         const formData = new FormData();
         formData.append('name', document.getElementById('title').value);

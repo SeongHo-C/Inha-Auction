@@ -67,11 +67,11 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
       htmlData +=
         '<col style="width: 20%" /><col style="width: 20%" /><col style="width: 20%" /></colgroup>';
       htmlData +=
-        '<tr><th>상품명</th><th>낙찰가</th><th>경매상태</th><th>남은 마감시간</th><th>입찰현황</th></tr>';
+        '<thead><tr><th>상품명</th><th>낙찰가</th><th>경매상태</th><th>남은 마감시간</th><th>입찰현황</th></tr></thead>';
       for (let i = 0; i < data.count; i++) {
         const transactionTime = remaindTime(product[i].endDate);
 
-        htmlData += '<tr><td>' + product[i].productName + '</td>';
+        htmlData += '<tbody><tr><td>' + product[i].productName + '</td>';
         htmlData += '<td id ="successBidPrice' + i + '">';
 
         if (product[i].successBidPrice !== null) {
@@ -111,7 +111,7 @@ fetch('http://182.218.194.156:8080/order/sales?memberId=' + memberId, {
           '`' +
           ')">' +
           product[i].bidCnt +
-          '</button></td></tr>';
+          '</button></td></tr></tbody>';
       }
       $('#sales').html(htmlData);
     }
