@@ -9,6 +9,7 @@ function messageBox(roomId) {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       messageBoxAdd();
       function messageBoxAdd() {
         let htmlData = '';
@@ -38,7 +39,7 @@ function messageBox(roomId) {
         for (let i = 0; i < messages.length; i++) {
           if (memberId == messages[i].sender.id) {
             htmlData += `
-            <div class="chat-message-right pb-4"><div class="flex-shrink-1 bg-blue rounded py-2 px-3 mr-3">${messages[i].message}</div></div>`;
+            <div class="chat-message-right pb-4"><div class="flex-shrink-1 rounded py-2 px-3 mr-3" style="background: lightblue">${messages[i].message}</div></div>`;
           } else {
             htmlData += `
             <div class="chat-message-left pb-4"><div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">

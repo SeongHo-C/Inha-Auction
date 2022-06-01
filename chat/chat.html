@@ -70,7 +70,7 @@
   <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container px-5 px-lg-5">
+      <div class="container px-6">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <div class="dropdown">
@@ -117,16 +117,9 @@
             />
             <span id="inhaAuction" class="fs-4">Inha Auction</span>
           </a>
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-5 w-40 ms-5">
-            <input
-              type="search"
-              class="form-control"
-              placeholder="Search..."
-              aria-label="Search"
-            />
-          </form>
+
           <ul
-            class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0 me-lg-4 ms-6"
+            class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0 me-lg-4 ms-auto"
           >
             <li>
               <a href="/main/register.html" class="nav-link px-3 link-dark"
@@ -139,7 +132,7 @@
               >
             </li>
             <li>
-              <a href="#" class="nav-link px-3 link-dark">채팅</a>
+              <a href="/chat/chat.html" class="nav-link px-3 link-dark">채팅</a>
             </li>
           </ul>
         </div>
@@ -147,7 +140,7 @@
     </header>
     <main class="content">
       <div class="container">
-        <h1 class="h3 mb-3">Messages</h1>
+        <!-- <h1 class="h3 mb-3">채팅</h1> -->
 
         <div class="card" style="width: 100%">
           <div class="row g-0">
@@ -162,21 +155,25 @@
               <div id="messageBoxContent">
                 <!-- 메세지 박스 내용 -->
               </div>
-              <div class="flex-grow-0 py-3 px-4 border-top">
-                <div
-                  id="sendHidden"
-                  class="input-group"
-                  style="visibility: hidden"
-                >
-                  <input
-                    id="message"
-                    type="text"
-                    class="form-control"
-                    placeholder="Type your message"
-                  />
-                  <button id="sendBtn" class="btn btn-primary">Send</button>
+              <form id="sendForm">
+                <div class="flex-grow-0 py-3 px-4 border-top">
+                  <div
+                    id="sendHidden"
+                    class="input-group"
+                    style="visibility: hidden"
+                  >
+                    <input
+                      id="message"
+                      type="text"
+                      class="form-control"
+                      placeholder="Type your message"
+                    />
+                    <button type="submit" id="sendBtn" class="btn btn-primary">
+                      Send
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
