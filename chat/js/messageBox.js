@@ -1,4 +1,4 @@
-function messageBox(roomId) {
+function messageBox(roomId, productId) {
   const sendHidden = document.querySelector('#sendHidden');
   sendHidden.style.visibility = 'visible';
 
@@ -27,10 +27,14 @@ function messageBox(roomId) {
           htmlData += info.customer.name;
         }
 
-        htmlData += `</strong></div><div><button class="btn btn-primary mr-1 px-3">신고</button>
-        
-        </div></div></div>
-        `;
+        htmlData += `</strong></div><div><a href="/main/notify.html?id=${productId}&reportedId=`;
+
+        if (memberId == info.customer.id) {
+          htmlData += info.seller.id;
+        } else {
+          htmlData += info.customer.id;
+        }
+        htmlData += `"><button class="btn btn-primary mr-1 px-3">신고</button></a></div></div></div>`;
 
         htmlData += `
         <div class="position-relative">

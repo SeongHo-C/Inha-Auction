@@ -7,6 +7,7 @@ fetch('http://182.218.194.156:8080/chat/room?memberId=' + memberId, {
   .then((response) => response.json())
   .then((data) => {
     console.log(data.data);
+
     // 채팅방 목록 조회
     sendMessage(data);
 
@@ -19,7 +20,7 @@ fetch('http://182.218.194.156:8080/chat/room?memberId=' + memberId, {
                     <strong><h4><i class="fa-solid fa-user-group" style="margin-right: 15px"></i>채팅 목록</h4></strong></div></div></div>`;
       for (let i = 0; i < data.count; i++) {
         htmlData += `
-          <a href="#?${info[i].id}" class="list-group-item list-group-item-action border-1" onClick="messageBox(${info[i].id})">
+          <a href="#?${info[i].id}" class="list-group-item list-group-item-action border-1" onClick="messageBox(${info[i].id}, ${info[i].product.id})">
           <div class="d-flex align-items-start"><div id="receiver${info[i].id}" class="flex-grow-1 ml-3">
           <i class="fa-solid fa-user-graduate" style="margin-right: 15px; color: #ADD8E6"></i>`;
         if (memberId == info[i].seller.id) {
