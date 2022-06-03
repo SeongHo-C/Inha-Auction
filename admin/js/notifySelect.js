@@ -22,6 +22,10 @@ fetch('http://182.218.194.156:8080/admin/reports?page=1&per_page=10', {
       }
       $('#notifyTable').html(htmlData);
     }
+
+    const search = document.querySelector('.dataTable-input');
+    search.setAttribute('type', 'hidden');
+    console.log(search);
   })
   .catch(console.log);
 

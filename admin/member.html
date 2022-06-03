@@ -12,17 +12,14 @@
     <title>관리자 페이지</title>
     <script defer src="/admin/js/memberSelect.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    
-   
     <script src="/admin/js/memberDeleteStop.js"></script>
-
     <script async src="/admin/js/logout.js"></script>
     <script async src="/admin/js/memberChange.js"></script>
     
-    <link
+    <!-- <link
       href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
       rel="stylesheet"
-    />
+    /> -->
     <link href="css/styles.css" rel="stylesheet" />
     
   </head>
@@ -66,11 +63,12 @@
           <div class="sb-sidenav-menu">
             <div class="nav">
               <a class="nav-link" href="member.html">
-                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                <div class="sb-nav-link-icon">
+                  <i style="width: 20px" class="fa-solid fa-user-gear"></i></div>
                 회원관리
               </a>
               <a class="nav-link" href="report.html">
-                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                <div class="sb-nav-link-icon"><i style="width: 20px" class="fa-solid fa-skull-crossbones"></i></div>
                 신고관리
               </a>
             </div>
@@ -78,12 +76,10 @@
       </div>
       <div id="layoutSidenav_content">
         <main>
-          <div class="container-fluid px-4">
-            
-    
+          <div class="container-fluid px-4 mt-3">
             <div class="card mb-4">
               <div class="card-header">
-                <i class="fas fa-table me-1"></i>
+              <i class="fa-solid fa-user-gear"></i>
                 회원관리
               </div>
               <div class="card-body">

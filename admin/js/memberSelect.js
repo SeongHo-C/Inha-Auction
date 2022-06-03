@@ -1,9 +1,14 @@
+let searchValue = localStorage.getItem('adminSearch') || '';
+
 // 회원 조회
-fetch('http://182.218.194.156:8080/admin/members?page=1&per_page=10', {
-  headers: {
-    Authorization: 'Bearer ' + localStorage.getItem('token'),
-  },
-})
+fetch(
+  `http://182.218.194.156:8080/admin/members?page=1&per_page=10&keyword=${searchValue}`,
+  {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    },
+  }
+)
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
@@ -52,6 +57,16 @@ fetch('http://182.218.194.156:8080/admin/members?page=1&per_page=10', {
         }
       }
     }
+
+    const search = document.querySelector('.dataTable-input');
+    search.addEventListener('keydown', (event) => {
+      if (event.key == 'Enter') {
+        const searchVal = search.value;
+        localStorage.setItem('adminSearch', searchVal);
+        location.reload();
+      }
+    });
+    search.value = searchValue;
   })
   .catch(console.log);
 

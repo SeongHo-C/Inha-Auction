@@ -17,7 +17,7 @@ fetch('http://182.218.194.156:8080/chat/room?memberId=' + memberId, {
       const info = data.data;
 
       htmlData += `<div class="py-2 px-2 d-none d-md-block" style="margin-top: 9.5px"><div class="d-flex align-items-center"><div class="flex-grow-1">
-                    <strong><h4><i class="fa-solid fa-user-group" style="margin-right: 15px"></i>채팅 목록</h4></strong></div></div></div>`;
+                    <strong><h4><i class="fa-solid fa-comment" style="margin-right: 15px"></i>채팅 목록</h4></strong></div></div></div>`;
       for (let i = 0; i < data.count; i++) {
         htmlData += `
           <a href="#?${info[i].id}" class="list-group-item list-group-item-action border-1" onClick="messageBox(${info[i].id}, ${info[i].product.id})">
