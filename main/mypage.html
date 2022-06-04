@@ -204,7 +204,7 @@
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title" id="exampleModalLabel">회원정보수정</h4>
@@ -221,7 +221,7 @@
                     <legend>
                       <h5>비밀번호 변경</h5>
                     </legend>
-                    <ul>
+                    <ul class="modify">
                       <li class="mb-2">
                         <label for="user-pw">현재 비밀번호</label>
                         <input type="password" id="userPw" />
@@ -233,20 +233,22 @@
                       <li>
                         <label for="new-pw-check">변경 비밀번호 확인</label>
                         <input type="password" id="newPwCheck" />
-                        <button
-                          type="button"
-                          id="pwChange"
-                          class="btn btn-primary ms-5"
+                        <span style="display: flex; justify-content: flex-end"
+                          ><button
+                            type="button"
+                            id="pwChange"
+                            class="btn btn-primary"
+                          >
+                            비밀번호 변경
+                          </button></span
                         >
-                          비밀번호 변경
-                        </button>
                       </li>
                     </ul>
                   </fieldset>
                   <hr />
                   <fieldset>
                     <legend><h5>회원정보 변경</h5></legend>
-                    <ul>
+                    <ul class="modify">
                       <li class="mb-2">
                         <label for="user-email">이메일</label>
                         <input type="email" id="userEmail" size="25" value="" />
@@ -264,22 +266,29 @@
                           size="25"
                           value=""
                         />
+                        <span style="display: flex; justify-content: flex-end">
+                          <button
+                            type="button"
+                            id="changeInfo"
+                            class="btn btn-primary me-2"
+                          >
+                            수정
+                          </button>
+                          <button
+                            type="submit"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            닫기
+                          </button></span
+                        >
                       </li>
                     </ul>
                   </fieldset>
                 </form>
-                <div class="modal-footer">
-                  <button type="button" id="changeInfo" class="btn btn-primary">
-                    수정
-                  </button>
-                  <button
-                    type="submit"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    닫기
-                  </button>
-                </div>
+                <!-- <div class="modal-footer"> -->
+
+                <!-- </div> -->
               </div>
             </div>
           </div>

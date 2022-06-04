@@ -11995,3 +11995,7 @@ ul.block {
   position: sticky;
   top: 0px;
 }
+
+.modify li > label {
+  width: 150px;
+}
