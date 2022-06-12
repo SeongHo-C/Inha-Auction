@@ -17,7 +17,14 @@ fetch('http://182.218.194.156:8080/product/' + productId)
     function btnDisabled() {
       const product = data.data;
       const target = document.getElementById('Bid');
-      if (product.successBid !== null || product.sellerId == id) {
+      const memberState = localStorage.getItem('memberState');
+      console.log(memberState);
+      if (
+        product.successBid !== null ||
+        product.sellerId == id ||
+        memberState == 'ROLE_ANONYMOUS' ||
+        memberState == null
+      ) {
         target.disabled = true;
       }
     }

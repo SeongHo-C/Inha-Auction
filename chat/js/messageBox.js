@@ -15,7 +15,6 @@ function messageBox(roomId, productId) {
         let htmlData = '';
         const info = data.data;
         const messages = info.messages;
-        console.log(messages);
 
         htmlData += `
         <div class="py-2 px-4 border-bottom d-none d-lg-block"><div class="d-flex align-items-center py-1">

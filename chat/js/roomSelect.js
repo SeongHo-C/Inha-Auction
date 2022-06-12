@@ -41,15 +41,17 @@ fetch('http://182.218.194.156:8080/chat/room?memberId=' + memberId, {
 function sendMessage(data) {
   const sendForm = document.querySelector('#sendForm');
   const room = data.data;
+  console.log(room);
   let receiverId = '';
+
   for (let i = 0; i < data.count; i++) {
     if (memberId == room[i].customer.id) {
       receiverId = room[i].seller.id;
     } else {
       receiverId = room[i].customer.id;
     }
-    console.log(receiverId);
   }
+
   // 탭, 스페이스
   const pattern = /\s/g;
 

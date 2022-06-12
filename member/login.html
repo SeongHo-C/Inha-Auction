@@ -135,12 +135,14 @@
           })
           .then((result) => {
             const data = result.data;
-            console.log(result);
+
+            if (result.errorCode == 403) {
+              alert(result.errorMessage);
+            }
             localStorage.setItem('token', data.accessToken);
             localStorage.setItem('id', id);
             localStorage.setItem('memberId', data.memberId);
-            console.log(data.accessToken);
-
+            localStorage.setItem('memberState', data.state);
             if (data.state == 'ROLE_ADMIN') {
               location.href = '/admin/member.html';
               alert('관리자입니다.');

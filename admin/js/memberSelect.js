@@ -17,6 +17,22 @@ fetch(
     function memberAdd() {
       let htmlData = '';
       const member = data.data;
+      // 서버 시간
+      var xmlHttpRequest;
+      if (window.XMLHttpRequest) {
+        xmlHttpRequest = new XMLHttpRequest();
+      } else if (window.ActiveXObject) {
+        xmlHttpRequest = new ActiveXObject('Microsoft.XMLHTTP');
+      } else {
+        return;
+      }
+      xmlHttpRequest.open('HEAD', window.location.href.toString(), false);
+      xmlHttpRequest.setRequestHeader('ContentType', 'text/html');
+      xmlHttpRequest.send('');
+
+      var serverDate = xmlHttpRequest.getResponseHeader('Date');
+      var now = new Date(serverDate);
+      console.log(now);
 
       for (let i = 0; i < data.count; i++) {
         if (member[i].state !== 'ROLE_ADMIN') {
@@ -28,7 +44,10 @@ fetch(
         <td><select name="state" id="state-select${member[i].id}" onchange="changeState(${member[i].id})">
         <option value="ROLE_USER">승인 회원</option><option value="ROLE_ANONYMOUS">미승인 회원</option><option value="ROLE_ADMIN">관리자</option></select><br>`;
 
-          if (member[i].banDate !== null) {
+          const bantoDate = new Date(member[i].banDate);
+          bantoDate.setHours(0);
+
+          if (member[i].banDate !== null && bantoDate > now) {
             let date = new Date(member[i].banDate).toLocaleDateString();
 
             htmlData += `<button class="btn btn-primary text-center p-0 mt-2" onclick="stopAlert('${date}')">정지중</button>`;

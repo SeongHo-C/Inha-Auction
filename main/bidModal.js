@@ -23,8 +23,10 @@ function currentBidModal(
       currentBidDisabled();
       function currentBidDisabled() {
         const product = data.data;
+
         const stateChk = document.getElementById('state' + productid).firstChild
           .data;
+
         for (let i = 0; i < data.count; i++) {
           console.log(instantPrice);
 

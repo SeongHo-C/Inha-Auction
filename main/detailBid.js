@@ -16,10 +16,12 @@ function toggleTextbox(checkbox) {
 
 function onBid(product) {
   // 입찰하기
+
   const btnBid = document.getElementById('btnBid');
 
   btnBid.addEventListener('click', function (e) {
     e.preventDefault();
+
     const instantPrice_value = Number(
       document
         .getElementById('instantPrice_value')

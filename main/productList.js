@@ -38,7 +38,7 @@ if (categoryValue !== '') {
   categoryPath.value = categoryValue;
 } else {
   fetch(
-    `http://182.218.194.156:8080/product?page=1&per_page=50&keyword=${searchValue}`
+    `http://182.218.194.156:8080/product?page=1&per_page=70&keyword=${searchValue}`
   )
     .then((response) => {
       return response.json();
