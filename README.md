@@ -2,7 +2,7 @@
 ## 인하공전 학생을 위한 HTTP API를 이용한 중고거래 서비스 🚚
 ## Auction service using HTTP API for the Inha Technical College student
 #### Project nickname : 인하공전 중고거래 서비스
-#### Project execution period : 2022.04.14~2022.06.13
+#### Project period : 2022.04.14~2022.06.13
 -----------------------
 ## Description
 인하공전 중고거래 서비스는 당근마켓, 번개장터 등의 중고거래 시스템에 경매 시스템을 도입하여 구매하고자 하는 물품의 입찰에 참여할 수 있는 서비스입니다.
@@ -11,7 +11,7 @@
 
 ## Environment
 
-> JavaScript Version ES6+ (Window)
+> JavaScript ES6+ (Window)
 > 
 > HTML5, CSS3
 >
