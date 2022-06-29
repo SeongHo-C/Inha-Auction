@@ -32,6 +32,6 @@
 
 <img src="https://user-images.githubusercontent.com/83394485/176358971-067d5a40-3798-44ff-90e5-c90d2978744b.png" height="400" />
 
-## Result(Video)
+## Result(video)
 
 https://www.youtube.com/watch?v=yvu-paQ6aYI
