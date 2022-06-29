@@ -1,4 +1,4 @@
-## 2022 - Inha Auction Project
+## 2022 - Inha Auction Service
 ## 인하공전 학생을 위한 HTTP API를 이용한 중고거래 서비스 🚚
 ## Auction service using HTTP API for the Inha Technical College student
 #### Project nickname : 인하공전 중고거래 서비스
@@ -17,7 +17,21 @@
 >
 > Bootstrap5
 
-<!-- ## System Structure
+## Main Function
+### 경매
 
-<img src="https://user-images.githubusercontent.com/83394485/176350377-dc5ff235-3186-4268-82d7-0f6be4ce493d.png" width="50%" height="50%" /> -->
+- 판매자가 등록한 시작가를 바탕으로 구매자가 입찰하거나 즉결 가격으로 즉시 낙찰 가능하다.
+- 판매자의 선택에 따라서 낙찰자가 정해진다.(즉결 가격으로 입찰한 입찰자가 없는 경우)
+- 경매 기간 동안 한 건의 입찰도 없는 경우 경매는 유찰되어 종료된다.
 
+## System Structure
+
+<img src="https://user-images.githubusercontent.com/83394485/176357995-d0cada2a-7d95-4383-b8ce-870dc6d0a0ad.png"/>
+
+## Usecase Diagram
+
+<img src="https://user-images.githubusercontent.com/83394485/176358971-067d5a40-3798-44ff-90e5-c90d2978744b.png" height="400" />
+
+## Result(Video)
+
+https://www.youtube.com/watch?v=yvu-paQ6aYI
