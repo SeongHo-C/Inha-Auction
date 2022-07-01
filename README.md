@@ -1,6 +1,5 @@
 ## 📌 2022 - Inha Auction Service 
 ## 인하공전 학생을 위한 HTTP API를 이용한 중고거래 서비스 🚚
-## Auction service using HTTP API for the Inha Technical College student
 #### Project nickname : 인하공전 중고거래 서비스
 #### Project period : 2022.04.14~2022.06.13
 -----------------------
