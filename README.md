@@ -23,7 +23,7 @@
 - 판매자의 선택에 따라서 낙찰자가 정해진다.(즉결 가격으로 입찰한 입찰자가 없는 경우)
 - 경매 기간 동안 한 건의 입찰도 없는 경우 경매는 유찰되어 종료된다.
 
-<img src="https://user-images.githubusercontent.com/83394485/177034475-c8dff761-18f9-4de7-abf1-4850806e7076.png" height="400"/>
+<img src="https://user-images.githubusercontent.com/83394485/177034475-c8dff761-18f9-4de7-abf1-4850806e7076.png" height="300"/>
 
 
 ## 🗂 System Structure
@@ -32,7 +32,7 @@
 
 ## Page Navigation
 
-<img src="https://user-images.githubusercontent.com/83394485/177034585-b3ddec08-4d0a-4042-a64b-30185338534c.png" height="400" />
+<img src="https://user-images.githubusercontent.com/83394485/177034585-b3ddec08-4d0a-4042-a64b-30185338534c.png" height="300" />
 
 ## 🎥 Result(video)
 
