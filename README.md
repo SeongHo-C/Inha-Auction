@@ -1,39 +1,46 @@
-## 📌 2022 - Inha Auction Service 
-## 인하공전 학생을 위한 HTTP API를 이용한 중고거래 서비스 🚚
-#### Project nickname : 인하공전 중고거래 서비스
-#### Project period : 2022.04.14~2022.06.13
------------------------
-## 💻 Description
-인하공전 중고거래 서비스는 당근마켓, 번개장터 등의 중고거래 시스템에 경매 시스템을 도입하여 구매하고자 하는 물품의 입찰에 참여할 수 있는 서비스입니다.
+<h1 align="center">Inha Aution Portfolio<img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="48px"></h1>
+<p>
+</p>
 
-학과 강의 교재를 구매할 때 새 교재를 사기엔 금액적인 부담이 있어 선후배간 중고거래를 주로 이용합니다. 이 때 에브리타임이라는 앱의 장터 게시판을 이용할 수 있지만 학과별 분류가 없이 거래 글이 뒤섞여 있어 원하는 학과의 교재를 찾기가 번거로우며 거래가 끝난 상품인지 확인할 수 없다는 불편한 점이 있습니다. 그리하여 인하공전 학생들의 편의를 위한 인하공전 중고거래 서비스를 개발하기로 하였습니다.
+> Inha Auction / 인하 옥션 (Frontend 1명, Backend 1명) :clapper: [Demo 시연영상](https://www.youtube.com/watch?v=yvu-paQ6aYI)
 
-## ⚙ Environment & Technologies
+<br>
 
-> JavaScript ES6+ (Window)
-> 
-> HTML5, CSS3, Bootstrap5
->
-> Web Socket, JWT, Fetch API
+## 📝 Description
+```sh
+당근마켓, 번개장터 등의 중고 거래 서비스에 경매 시스템을 도입하여 구매하고자 하는 물품의 입찰에 참여할 수 있는 경매 플랫폼
+```
 
-## Main Function
-### 경매
+<br>
 
-- 판매자가 등록한 시작가를 바탕으로 구매자가 입찰하거나 즉결 가격으로 즉시 낙찰 가능하다.
-- 판매자의 선택에 따라서 낙찰자가 정해진다.(즉결 가격으로 입찰한 입찰자가 없는 경우)
-- 경매 기간 동안 한 건의 입찰도 없는 경우 경매는 유찰되어 종료된다.
+## 📌 Project Goal
+```sh
+기존 에브리타임 앱의 장터 게시판에서 선후배 간의 거래가 활발히 이루어지고 있지만 거래 완료 상품인지 확인하기 어려움, 
+학과 별로 교재가 분류되어 있지 않음 등의 불편함을 해결하고자 이번 프로젝트를 진행
 
-<img src="https://user-images.githubusercontent.com/83394485/177034475-c8dff761-18f9-4de7-abf1-4850806e7076.png" height="300"/>
+- 추가 -
+사용자에게 진행 과정을 알려주기 위해 Web Socket을 사용해 진행 상황에 대한 알림 추가
+```
 
+<br>
 
-## 🗂 System Structure
+## ⚙ Tech Stack
+#### - Frontend: JavaScript
+#### - Backend: Spring
+#### - Tools: SourceTree, Notion, Visual Studio Code
 
-<img src="https://user-images.githubusercontent.com/83394485/176357995-d0cada2a-7d95-4383-b8ce-870dc6d0a0ad.png"/>
+<br>
 
-## Page Navigation
+## 🗂 System Architecture
+<img src="https://user-images.githubusercontent.com/83394485/176357995-d0cada2a-7d95-4383-b8ce-870dc6d0a0ad.png"  width="600" height="200"/>
 
-<img src="https://user-images.githubusercontent.com/83394485/177034585-b3ddec08-4d0a-4042-a64b-30185338534c.png" height="300" />
+<br>
 
-## 🎥 Result(video)
+## 🗺 Page Navigation
+<img src="https://user-images.githubusercontent.com/83394485/201511820-ac724968-fd60-4703-9909-1688495edd07.png"  width="600" height="300"/>
 
-https://www.youtube.com/watch?v=yvu-paQ6aYI
+<br>
+
+## 🤜🤛 Author
+#### Frontend: Lee SeongHo
+#### Backend: Park InWoo
